@@ -28,60 +28,70 @@ const About = () => {
   ];
 
   return (
-    <section id="about" className="py-20 bg-background">
+    <section id="about" className="py-24 bg-card/30 relative overflow-hidden">
+      {/* Background decoration */}
+      <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-primary/5 to-transparent" />
+      
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Content */}
-          <div className="animate-slide-up">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              About <span className="text-gradient">Datamorph</span>
+          <div className="animate-slide-in-left">
+            <div className="inline-block px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6">
+              <span className="text-sm font-medium text-primary uppercase tracking-wide">WE ANALYZE YOUR DATA</span>
+            </div>
+            
+            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6 leading-tight">
+              We find what to automate, who your users are & how AI can optimize your workflow.
+              <span className="text-primary"> Best part is we also build and launch real solutions.</span>
             </h2>
             
-            <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-              At Datamorph, we believe artificial intelligence is the cornerstone of future business success. 
-              Founded by industry pioneers, we've dedicated ourselves to creating AI solutions that don't just 
-              automate—they transform, predict, and elevate entire organizations.
+            <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
+              Our expert team analyzes your current operations to identify automation opportunities 
+              and implement AI solutions that drive measurable results.
             </p>
 
-            <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-              Our mission is to democratize access to enterprise-grade AI, making cutting-edge technology 
-              accessible to businesses of all sizes while maintaining the highest standards of security, 
-              reliability, and performance.
-            </p>
-
-            {/* Achievements */}
-            <div className="space-y-3 mb-8">
-              {achievements.map((achievement, index) => (
-                <div key={index} className="flex items-center gap-3">
-                  <CheckCircle className="w-5 h-5 text-primary flex-shrink-0" />
-                  <span className="text-foreground">{achievement}</span>
+            <div className="space-y-4 mb-8">
+              <div className="flex items-center gap-3 p-4 rounded-lg bg-background/50 border border-border hover-glow transition-all duration-300 animate-fade-in" style={{ animationDelay: '0.2s' }}>
+                <div className="w-8 h-8 bg-primary/20 rounded-full flex items-center justify-center">
+                  <span className="text-primary font-bold">✓</span>
                 </div>
-              ))}
-            </div>
-
-            {/* Values */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
-              {values.map((value, index) => (
-                <div key={index} className="text-center">
-                  <div className="w-16 h-16 bg-gradient-primary rounded-full flex items-center justify-center text-white mx-auto mb-4">
-                    {value.icon}
-                  </div>
-                  <h3 className="font-semibold mb-2">{value.title}</h3>
-                  <p className="text-sm text-muted-foreground">{value.description}</p>
+                <span className="text-foreground font-medium">Custom AI solution development</span>
+              </div>
+              <div className="flex items-center gap-3 p-4 rounded-lg bg-background/50 border border-border hover-glow transition-all duration-300 animate-fade-in" style={{ animationDelay: '0.4s' }}>
+                <div className="w-8 h-8 bg-primary/20 rounded-full flex items-center justify-center">
+                  <span className="text-primary font-bold">✓</span>
                 </div>
-              ))}
+                <span className="text-foreground font-medium">Workflow optimization & automation</span>
+              </div>
+              <div className="flex items-center gap-3 p-4 rounded-lg bg-background/50 border border-border hover-glow transition-all duration-300 animate-fade-in" style={{ animationDelay: '0.6s' }}>
+                <div className="w-8 h-8 bg-primary/20 rounded-full flex items-center justify-center">
+                  <span className="text-primary font-bold">✓</span>
+                </div>
+                <span className="text-foreground font-medium">Data analysis & insights generation</span>
+              </div>
             </div>
           </div>
 
-          {/* Image */}
-          <div className="animate-fade-in">
+          {/* Image/Visual */}
+          <div className="relative animate-slide-in-right">
             <div className="relative">
-              <img
-                src={aboutImage}
-                alt="Datamorph Team"
-                className="rounded-2xl shadow-premium w-full"
-              />
-              <div className="absolute inset-0 bg-gradient-primary opacity-20 rounded-2xl" />
+              <div className="aspect-square rounded-2xl bg-gradient-to-br from-primary/20 to-accent/20 p-8 hover-lift">
+                <div className="w-full h-full rounded-xl bg-card/50 backdrop-blur-sm border border-border flex items-center justify-center">
+                  <div className="text-center">
+                    <div className="w-24 h-24 bg-primary/20 rounded-full mx-auto mb-6 flex items-center justify-center animate-pulse-glow">
+                      <span className="text-3xl">🤖</span>
+                    </div>
+                    <div className="space-y-2">
+                      <div className="text-sm font-medium text-primary">Madhav Bhattarai</div>
+                      <div className="text-xs text-muted-foreground">Co-founder & AI Strategy Lead</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              {/* Floating elements */}
+              <div className="absolute -top-4 -right-4 w-8 h-8 bg-primary/30 rounded-full animate-float" />
+              <div className="absolute -bottom-4 -left-4 w-6 h-6 bg-accent/30 rounded-full animate-float" style={{ animationDelay: '2s' }} />
             </div>
           </div>
         </div>

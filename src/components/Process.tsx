@@ -46,31 +46,34 @@ const Process = () => {
             return (
               <div
                 key={index}
-                className="relative p-8 rounded-2xl bg-card border border-border hover:shadow-glow transition-all duration-300 group"
+                className="relative p-8 rounded-2xl bg-card border border-border hover:shadow-glow transition-all duration-300 group hover-lift animate-bounce-in"
+                style={{ animationDelay: `${index * 0.2}s` }}
               >
                 {/* Step Number */}
-                <div className="absolute -top-4 -left-4 w-12 h-12 bg-primary rounded-full flex items-center justify-center text-primary-foreground font-bold text-lg shadow-lg">
+                <div className="absolute -top-4 -left-4 w-12 h-12 bg-primary rounded-full flex items-center justify-center text-primary-foreground font-bold text-lg shadow-lg group-hover:scale-110 transition-transform animate-pulse-glow">
                   {step.number}
                 </div>
 
                 {/* Icon */}
                 <div className="mb-6 mt-4">
-                  <div className="w-16 h-16 bg-primary/10 rounded-xl flex items-center justify-center group-hover:bg-primary/20 transition-colors">
-                    <IconComponent className="w-8 h-8 text-primary" />
+                  <div className="w-16 h-16 bg-primary/10 rounded-xl flex items-center justify-center group-hover:bg-primary/20 transition-all duration-300 group-hover:scale-110 group-hover:rotate-6">
+                    <IconComponent className="w-8 h-8 text-primary group-hover:animate-pulse" />
                   </div>
                 </div>
 
                 {/* Content */}
-                <h3 className="text-2xl font-bold text-foreground mb-4">
+                <h3 className="text-2xl font-bold text-foreground mb-4 group-hover:text-primary transition-colors">
                   {step.title}
                 </h3>
                 <p className="text-muted-foreground leading-relaxed">
                   {step.description}
                 </p>
 
-                {/* Connector line */}
+                {/* Connector line with animation */}
                 {index < steps.length - 1 && (
-                  <div className="hidden md:block absolute top-1/2 -right-4 w-8 h-0.5 bg-border" />
+                  <div className="hidden md:block absolute top-1/2 -right-4 w-8 h-0.5 bg-border relative overflow-hidden">
+                    <div className="absolute inset-0 bg-primary/50 animate-pulse" style={{ animationDelay: `${index * 0.5}s` }} />
+                  </div>
                 )}
               </div>
             );

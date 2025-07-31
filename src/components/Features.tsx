@@ -58,17 +58,18 @@ const Features = () => {
             return (
               <div
                 key={index}
-                className="p-8 rounded-2xl bg-card border border-border hover:shadow-glow transition-all duration-300 group hover:-translate-y-2"
+                className="p-8 rounded-2xl bg-card border border-border hover:shadow-glow transition-all duration-300 group hover-lift animate-scale-in"
+                style={{ animationDelay: `${index * 0.1}s` }}
               >
                 {/* Icon */}
                 <div className="mb-6">
-                  <div className="w-16 h-16 bg-primary/10 rounded-xl flex items-center justify-center group-hover:bg-primary/20 transition-colors">
-                    <IconComponent className="w-8 h-8 text-primary" />
+                  <div className="w-16 h-16 bg-primary/10 rounded-xl flex items-center justify-center group-hover:bg-primary/20 transition-all duration-300 group-hover:scale-110">
+                    <IconComponent className="w-8 h-8 text-primary group-hover:animate-pulse" />
                   </div>
                 </div>
 
                 {/* Content */}
-                <h3 className="text-xl font-bold text-foreground mb-4">
+                <h3 className="text-xl font-bold text-foreground mb-4 group-hover:text-primary transition-colors">
                   {feature.title}
                 </h3>
                 <p className="text-muted-foreground leading-relaxed">
