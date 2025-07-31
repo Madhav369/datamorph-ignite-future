@@ -6,15 +6,15 @@ const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const menuItems = [
-    { label: 'Solutions', href: '#solutions' },
-    { label: 'AI Platform', href: '#platform' },
-    { label: 'AI Academy', href: '#academy' },
-    { label: 'Case Studies', href: '#testimonials' },
+    { label: 'Services', href: '#services' },
+    { label: 'Process', href: '#process' },
+    { label: 'Pricing', href: '#pricing' },
+    { label: 'Blog', href: '#blog' },
     { label: 'Contact', href: '#contact' },
   ];
 
   return (
-    <nav className="fixed top-0 w-full z-50 glass">
+    <nav className="fixed top-0 w-full z-50 bg-background/90 backdrop-blur-md border-b border-border">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">
           {/* Logo */}
@@ -33,7 +33,7 @@ const Navigation = () => {
                 {item.label}
               </a>
             ))}
-            <Button className="btn-premium">Book Demo</Button>
+            <Button className="btn-premium">Get Template</Button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -62,7 +62,7 @@ const Navigation = () => {
                 </a>
               ))}
               <div className="px-3 py-2">
-                <Button className="btn-premium w-full">Book Demo</Button>
+                <Button className="btn-premium w-full">Get Template</Button>
               </div>
             </div>
           </div>

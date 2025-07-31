@@ -2,9 +2,10 @@ import Navigation from '@/components/Navigation';
 import Hero from '@/components/Hero';
 import About from '@/components/About';
 import Solutions from '@/components/Solutions';
-import Platform from '@/components/Platform';
-import Academy from '@/components/Academy';
+import Features from '@/components/Features';
+import Process from '@/components/Process';
 import Testimonials from '@/components/Testimonials';
+import Pricing from '@/components/Pricing';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
 
@@ -15,9 +16,10 @@ const Index = () => {
       <Hero />
       <About />
       <Solutions />
-      <Platform />
-      <Academy />
+      <Features />
+      <Process />
       <Testimonials />
+      <Pricing />
       <Contact />
       <Footer />
     </div>
