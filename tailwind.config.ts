@@ -78,6 +78,10 @@ export default {
 				'smooth': 'var(--transition-smooth)',
 				'bounce': 'var(--transition-bounce)',
 			},
+			fontFamily: {
+				'heading': ['Sora', 'system-ui', 'sans-serif'],
+				'body': ['Inter', 'system-ui', 'sans-serif'],
+			},
 			borderRadius: {
 				lg: 'var(--radius)',
 				md: 'calc(var(--radius) - 2px)',
@@ -103,7 +107,11 @@ export default {
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'typing': 'typing 2s steps(40, end)',
+				'float': 'float 3s ease-in-out infinite',
+				'neural-pulse': 'neural-pulse 2s ease-in-out infinite',
+				'slide-wave': 'slide-wave 3s ease-in-out infinite'
 			}
 		}
 	},

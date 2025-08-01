@@ -1,10 +1,36 @@
+import React, { useEffect, useRef } from 'react';
 import { ArrowRight, Play } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { motion } from 'framer-motion';
 import heroImage from '@/assets/hero-bg.jpg';
 
 const Hero = () => {
+  const heroRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    // Typing animation for hero text
+    const typingElement = document.querySelector('.typing-animation');
+    if (typingElement) {
+      typingElement.classList.add('animate-typing');
+    }
+  }, []);
+
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-background">
+    <section ref={heroRef} className="relative min-h-screen flex items-center justify-center overflow-hidden bg-background">{/* Particles */}
+      <div className="particles">
+        {[...Array(20)].map((_, i) => (
+          <div
+            key={i}
+            className="particle bg-primary/30 animate-float"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              animationDelay: `${Math.random() * 3}s`,
+              animationDuration: `${3 + Math.random() * 2}s`
+            }}
+          />
+        ))}
+      </div>
       {/* Video background */}
       <div className="absolute inset-0 z-0">
         <video 
@@ -41,10 +67,36 @@ const Hero = () => {
             <span className="text-sm font-medium text-primary">NEW GEN AI AUTOMATION PARTNER</span>
           </div>
 
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-foreground mb-6 leading-tight animate-slide-up" style={{ animationDelay: '0.4s' }}>
-            Automate Smarter. Grow Faster.
-            <span className="block text-gradient italic animate-pulse-glow">With AI.</span>
-          </h1>
+          <motion.h1 
+            className="text-5xl md:text-7xl lg:text-8xl font-bold text-foreground mb-6 leading-tight"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.4 }}
+          >
+            <motion.span
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
+            >
+              Automate Smarter.
+            </motion.span>
+            <motion.span
+              className="block"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.8 }}
+            >
+              Grow Faster.
+            </motion.span>
+            <motion.span 
+              className="block text-gradient italic animate-pulse-glow typing-animation"
+              initial={{ opacity: 0, width: 0 }}
+              animate={{ opacity: 1, width: "auto" }}
+              transition={{ duration: 1.2, delay: 1.2 }}
+            >
+              With AI.
+            </motion.span>
+          </motion.h1>
           
           <p className="text-xl md:text-2xl text-muted-foreground mb-12 max-w-2xl mx-auto leading-relaxed animate-fade-in" style={{ animationDelay: '0.6s' }}>
             AI Automation for Modern Businesses Made Simple

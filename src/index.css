@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Sora:wght@300;400;500;600;700;800&display=swap');
+
 /* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
 All colors MUST be HSL.
 */
@@ -38,19 +40,26 @@ All colors MUST be HSL.
     --input: 0 0% 15%;
     --ring: 244 41% 57%;
 
-    /* Premium gradients */
+    /* Premium gradients & effects */
     --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)));
     --gradient-hero: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--secondary)) 100%);
     --gradient-accent: linear-gradient(90deg, hsl(var(--primary)), hsl(var(--accent)));
+    --gradient-neural: linear-gradient(45deg, hsl(var(--primary) / 0.1) 0%, hsl(var(--primary-glow) / 0.05) 50%, transparent 100%);
     
-    /* Premium shadows */
+    /* Premium shadows & effects */
     --shadow-premium: 0 25px 50px -12px hsl(var(--primary) / 0.25);
     --shadow-glow: 0 0 40px hsl(var(--primary-glow) / 0.4);
     --shadow-card: 0 10px 30px -10px hsl(220 91% 28% / 0.1);
+    --shadow-neural: 0 0 60px hsl(var(--primary) / 0.15);
 
-    /* Animation timings */
+    /* Advanced animation timings */
     --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     --transition-bounce: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    --transition-elastic: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    
+    /* Typography */
+    --font-heading: 'Sora', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
 
     --radius: 0.5rem;
 
@@ -116,7 +125,13 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-body antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    @apply font-semibold tracking-tight;
   }
 }
 
@@ -232,7 +247,118 @@ All colors MUST be HSL.
 
   /* Premium card */
   .card-premium {
-    @apply bg-card/80 backdrop-blur-sm border border-white/10 rounded-2xl p-8 shadow-card hover:shadow-premium transition-all duration-300 hover:-translate-y-2;
+    @apply bg-card/80 backdrop-blur-sm border border-border/50 rounded-2xl shadow-card;
+    @apply transition-all duration-300 hover:shadow-glow hover:border-primary/30;
+  }
+
+  /* Neural network effects */
+  .neural-grid {
+    background-image: 
+      linear-gradient(to right, hsl(var(--border)) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(var(--border)) 1px, transparent 1px);
+    background-size: 4rem 4rem;
+    mask-image: radial-gradient(ellipse 60% 50% at 50% 0%, #000 70%, transparent 110%);
+  }
+
+  .neural-bg {
+    background: var(--gradient-neural);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .neural-bg::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+      radial-gradient(circle at 20% 50%, hsl(var(--primary) / 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, hsl(var(--primary-glow) / 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 40% 80%, hsl(var(--accent) / 0.1) 0%, transparent 50%);
+    animation: neural-pulse 4s ease-in-out infinite;
+  }
+
+  /* Particles */
+  .particles {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  .particle {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    border-radius: 50%;
+    opacity: 0.6;
+  }
+
+  /* Trust signals */
+  .trust-badge {
+    @apply inline-flex items-center gap-2 px-4 py-2 bg-card/80 border border-border/50 rounded-full;
+    @apply backdrop-blur-sm transition-all duration-300 hover:border-primary/30;
+  }
+
+  /* Statistics counter */
+  .stat-counter {
+    @apply text-4xl md:text-6xl font-bold text-gradient;
+  }
+
+  /* CTA sections */
+  .cta-wave {
+    background: linear-gradient(135deg, hsl(var(--primary) / 0.1) 0%, transparent 100%);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-wave::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, hsl(var(--primary) / 0.1), transparent);
+    animation: slide-wave 3s ease-in-out infinite;
+  }
+
+  /* Advanced utilities */
+  .hover-scale {
+    @apply transition-transform duration-300;
+  }
+
+  .hover-scale:hover {
+    @apply scale-105;
+  }
+
+  .text-gradient-neural {
+    background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)), hsl(var(--accent)));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .animate-neural-pulse {
+    animation: neural-pulse 2s ease-in-out infinite;
+  }
+
+  .animate-counter {
+    animation: counter-up 0.8s ease-out forwards;
+  }
+
+  /* Scroll-based animations */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease-out;
+  }
+
+  .reveal.active {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
@@ -313,9 +439,42 @@ All colors MUST be HSL.
 
 @keyframes pulse-glow {
   0%, 100% {
-    box-shadow: 0 0 20px hsl(var(--primary) / 0.3);
+    text-shadow: 0 0 20px hsl(var(--primary) / 0.5);
   }
   50% {
-    box-shadow: 0 0 40px hsl(var(--primary) / 0.6);
+    text-shadow: 0 0 30px hsl(var(--primary) / 0.8), 0 0 40px hsl(var(--primary-glow) / 0.6);
   }
+}
+
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes neural-pulse {
+  0%, 100% {
+    opacity: 0.4;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.1);
+  }
+}
+
+@keyframes counter-up {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-wave {
+  0% { left: -100%; }
+  50% { left: 100%; }
+  100% { left: 100%; }
 }
