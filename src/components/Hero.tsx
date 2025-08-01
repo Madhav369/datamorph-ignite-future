@@ -5,8 +5,22 @@ import heroImage from '@/assets/hero-bg.jpg';
 const Hero = () => {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-background">
-      {/* Animated background grid */}
-      <div className="absolute inset-0 opacity-20">
+      {/* Video background */}
+      <div className="absolute inset-0 z-0">
+        <video 
+          autoPlay 
+          muted 
+          loop 
+          className="w-full h-full object-cover opacity-20"
+          style={{ filter: 'hue-rotate(240deg) saturate(0.8)' }}
+        >
+          <source src="https://videos.pexels.com/video-files/3129671/3129671-uhd_2560_1440_30fps.mp4" type="video/mp4" />
+        </video>
+        <div className="absolute inset-0 bg-background/60" />
+      </div>
+
+      {/* Animated background grid overlay */}
+      <div className="absolute inset-0 opacity-10 z-10">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--border))_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--border))_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_110%)]" />
       </div>
 
