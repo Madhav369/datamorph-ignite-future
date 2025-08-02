@@ -1,54 +1,101 @@
-import { Bot, Brain, GraduationCap, Share2, PenTool, Target, TrendingUp, Globe } from 'lucide-react';
+import { Bot, Brain, GraduationCap, Share2, PenTool, Target, TrendingUp, Globe, Database, BarChart3, Video, Palette } from 'lucide-react';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 const Solutions = () => {
-  const solutions = [
+  const verticals = [
     {
-      icon: <Bot className="w-12 h-12" />,
-      title: "AI Workflow Automation",
-      description: "Intelligent agents that streamline operations, reduce manual tasks, and optimize business processes with precision.",
-      features: ["Smart Process Mining", "Automated Decision Trees", "Real-time Optimization"]
+      id: "ai-business",
+      title: "AI-Powered Business",
+      icon: <Bot className="w-8 h-8" />,
+      services: [
+        {
+          icon: <Bot className="w-10 h-10" />,
+          title: "Custom AI Agents",
+          description: "Bespoke AI solutions tailored to your specific business needs and operational goals.",
+          features: ["Domain-Specific Training", "Custom Integrations", "Scalable Architecture"]
+        },
+        {
+          icon: <Brain className="w-10 h-10" />,
+          title: "Workflow Automation",
+          description: "Intelligent systems that streamline operations and reduce manual tasks.",
+          features: ["Process Mining", "Decision Trees", "Real-time Optimization"]
+        },
+        {
+          icon: <Database className="w-10 h-10" />,
+          title: "Data Dashboards & CRM",
+          description: "AI-powered analytics and customer relationship management workflows.",
+          features: ["Real-time Analytics", "CRM Integration", "Predictive Insights"]
+        },
+        {
+          icon: <TrendingUp className="w-10 h-10" />,
+          title: "Business Strategy & Consultation",
+          description: "Strategic guidance with forecasting, market analysis, and growth planning.",
+          features: ["Business Forecasting", "Market Intelligence", "Growth Strategy"]
+        }
+      ]
     },
     {
-      icon: <Brain className="w-12 h-12" />,
-      title: "Custom AI Agents",
-      description: "Bespoke AI solutions tailored to your specific business needs, industry requirements, and operational goals.",
-      features: ["Domain-Specific Training", "Custom Integrations", "Scalable Architecture"]
+      id: "growth-marketing",
+      title: "Growth Marketing Engine",
+      icon: <Target className="w-8 h-8" />,
+      services: [
+        {
+          icon: <Target className="w-10 h-10" />,
+          title: "Performance Media Buying",
+          description: "Data-driven advertising campaigns optimized for maximum ROI.",
+          features: ["AI Optimization", "Cross-Platform Campaigns", "Real-time Analytics"]
+        },
+        {
+          icon: <BarChart3 className="w-10 h-10" />,
+          title: "Funnel Building",
+          description: "Conversion-optimized funnels with advanced analytics tracking.",
+          features: ["Conversion Optimization", "A/B Testing", "Attribution Modeling"]
+        }
+      ]
     },
     {
-      icon: <GraduationCap className="w-12 h-12" />,
+      id: "content-digital",
+      title: "Content & Digital Identity",
+      icon: <Palette className="w-8 h-8" />,
+      services: [
+        {
+          icon: <Video className="w-10 h-10" />,
+          title: "AI Video & Content Creation",
+          description: "AI-powered content generation that resonates across all platforms.",
+          features: ["Brand Voice Training", "Multi-Platform Publishing", "SEO Optimization"]
+        },
+        {
+          icon: <Share2 className="w-10 h-10" />,
+          title: "Social Media Management",
+          description: "Comprehensive social strategy and brand management with AI insights.",
+          features: ["Brand Strategy", "Content Scheduling", "Audience Analytics"]
+        },
+        {
+          icon: <Palette className="w-10 h-10" />,
+          title: "Personal Branding",
+          description: "Build and amplify your personal brand with strategic content.",
+          features: ["Brand Positioning", "Thought Leadership", "Reputation Management"]
+        }
+      ]
+    },
+    {
+      id: "ai-academy",
       title: "AI Academy",
-      description: "Premium training courses and certifications to empower your team with cutting-edge AI knowledge and skills.",
-      features: ["Expert-Led Courses", "Industry Certifications", "Hands-on Projects"]
-    },
-    {
-      icon: <Share2 className="w-12 h-12" />,
-      title: "Social Media Management",
-      description: "Comprehensive social media strategy and brand management powered by AI insights and automation.",
-      features: ["Brand Strategy", "Content Scheduling", "Audience Analytics"]
-    },
-    {
-      icon: <PenTool className="w-12 h-12" />,
-      title: "Content Creation",
-      description: "AI-powered content generation that resonates with your audience across all platforms and formats.",
-      features: ["Brand Voice Training", "Multi-Platform Publishing", "SEO Optimization"]
-    },
-    {
-      icon: <Target className="w-12 h-12" />,
-      title: "Media Buying (Performance Marketing)",
-      description: "Data-driven advertising campaigns optimized by AI for maximum ROI and precise audience targeting.",
-      features: ["AI Optimization", "Cross-Platform Campaigns", "Real-time Analytics"]
-    },
-    {
-      icon: <TrendingUp className="w-12 h-12" />,
-      title: "Business Strategy & Consultation",
-      description: "Strategic business guidance including forecasting, market analysis, and growth planning powered by AI.",
-      features: ["Business Forecasting", "Market Intelligence", "Growth Strategy"]
-    },
-    {
-      icon: <Globe className="w-12 h-12" />,
-      title: "Web Development",
-      description: "AI-enhanced web development that creates intelligent, responsive, and conversion-optimized websites.",
-      features: ["AI-Driven UX", "Smart Personalization", "Performance Optimization"]
+      icon: <GraduationCap className="w-8 h-8" />,
+      services: [
+        {
+          icon: <GraduationCap className="w-10 h-10" />,
+          title: "AI Training & Certification",
+          description: "Premium courses to empower your team with cutting-edge AI knowledge.",
+          features: ["Expert-Led Courses", "Industry Certifications", "Hands-on Projects"]
+        },
+        {
+          icon: <Globe className="w-10 h-10" />,
+          title: "AI Implementation Workshops",
+          description: "Practical workshops to implement AI solutions in your business.",
+          features: ["Custom Workshops", "Implementation Guides", "Ongoing Support"]
+        }
+      ]
     }
   ];
 
@@ -65,34 +112,103 @@ const Solutions = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
-          {solutions.map((solution, index) => (
-            <div
-              key={index}
-              className="card-premium group hover:scale-105 transition-all duration-300"
-            >
-              <div className="w-20 h-20 bg-gradient-primary rounded-2xl flex items-center justify-center text-white mb-6 group-hover:animate-glow">
-                {solution.icon}
+        {/* Desktop View */}
+        <div className="hidden lg:block">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {verticals.map((vertical, index) => (
+              <div key={index} className="space-y-6">
+                <div className="text-center pb-4 border-b border-border/20">
+                  <div className="w-16 h-16 bg-gradient-primary rounded-xl flex items-center justify-center text-white mx-auto mb-4">
+                    {vertical.icon}
+                  </div>
+                  <h3 className="text-xl font-semibold text-gradient">{vertical.title}</h3>
+                </div>
+                
+                <div className="space-y-4">
+                  {vertical.services.map((service, serviceIndex) => (
+                    <div key={serviceIndex} className="card-subtle group hover:scale-[1.02] transition-all duration-300 p-4">
+                      <div className="flex items-start space-x-3 mb-3">
+                        <div className="w-8 h-8 bg-gradient-primary rounded-lg flex items-center justify-center text-white flex-shrink-0 mt-1">
+                          {service.icon}
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <h4 className="font-semibold text-sm mb-2 group-hover:text-primary transition-colors leading-tight">
+                            {service.title}
+                          </h4>
+                          <p className="text-xs text-muted-foreground mb-3 leading-relaxed">
+                            {service.description}
+                          </p>
+                          <ul className="space-y-1">
+                            {service.features.map((feature, idx) => (
+                              <li key={idx} className="text-xs text-muted-foreground flex items-center">
+                                <div className="w-1 h-1 bg-primary rounded-full mr-2 flex-shrink-0" />
+                                <span className="truncate">{feature}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </div>
-              
-              <h3 className="text-xl font-semibold mb-4 group-hover:text-primary transition-colors">
-                {solution.title}
-              </h3>
-              
-              <p className="text-muted-foreground mb-6 leading-relaxed">
-                {solution.description}
-              </p>
+            ))}
+          </div>
+        </div>
 
-              <ul className="space-y-2">
-                {solution.features.map((feature, idx) => (
-                  <li key={idx} className="text-sm text-muted-foreground flex items-center">
-                    <div className="w-1.5 h-1.5 bg-primary rounded-full mr-3" />
-                    {feature}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
+        {/* Mobile/Tablet View */}
+        <div className="lg:hidden">
+          <Tabs defaultValue="ai-business" className="w-full">
+            <TabsList className="grid w-full grid-cols-2 md:grid-cols-4 mb-8">
+              {verticals.map((vertical) => (
+                <TabsTrigger key={vertical.id} value={vertical.id} className="text-xs">
+                  <div className="flex items-center space-x-2">
+                    <div className="w-4 h-4">{vertical.icon}</div>
+                    <span className="hidden sm:inline">{vertical.title}</span>
+                  </div>
+                </TabsTrigger>
+              ))}
+            </TabsList>
+            
+            {verticals.map((vertical) => (
+              <TabsContent key={vertical.id} value={vertical.id} className="space-y-4">
+                <div className="text-center mb-6">
+                  <div className="w-20 h-20 bg-gradient-primary rounded-2xl flex items-center justify-center text-white mx-auto mb-4">
+                    {vertical.icon}
+                  </div>
+                  <h3 className="text-2xl font-semibold text-gradient">{vertical.title}</h3>
+                </div>
+                
+                <div className="grid gap-6">
+                  {vertical.services.map((service, serviceIndex) => (
+                    <div key={serviceIndex} className="card-premium group hover:scale-[1.02] transition-all duration-300">
+                      <div className="flex items-start space-x-4 mb-4">
+                        <div className="w-12 h-12 bg-gradient-primary rounded-xl flex items-center justify-center text-white flex-shrink-0">
+                          {service.icon}
+                        </div>
+                        <div className="flex-1">
+                          <h4 className="text-lg font-semibold mb-2 group-hover:text-primary transition-colors">
+                            {service.title}
+                          </h4>
+                          <p className="text-muted-foreground mb-4 leading-relaxed">
+                            {service.description}
+                          </p>
+                          <ul className="space-y-2">
+                            {service.features.map((feature, idx) => (
+                              <li key={idx} className="text-sm text-muted-foreground flex items-center">
+                                <div className="w-1.5 h-1.5 bg-primary rounded-full mr-3 flex-shrink-0" />
+                                {feature}
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </TabsContent>
+            ))}
+          </Tabs>
         </div>
       </div>
     </section>
