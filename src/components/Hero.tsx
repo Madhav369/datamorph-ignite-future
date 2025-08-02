@@ -3,10 +3,8 @@ import { ArrowRight, Play } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
 import heroImage from '@/assets/hero-bg.jpg';
-
 const Hero = () => {
   const heroRef = useRef<HTMLElement>(null);
-
   useEffect(() => {
     // Typing animation for hero text
     const typingElement = document.querySelector('.typing-animation');
@@ -14,32 +12,20 @@ const Hero = () => {
       typingElement.classList.add('animate-typing');
     }
   }, []);
-
-  return (
-    <section ref={heroRef} className="relative min-h-screen flex items-center justify-center overflow-hidden bg-background">{/* Particles */}
+  return <section ref={heroRef} className="relative min-h-screen flex items-center justify-center overflow-hidden bg-background">{/* Particles */}
       <div className="particles">
-        {[...Array(20)].map((_, i) => (
-          <div
-            key={i}
-            className="particle bg-primary/30 animate-float"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 3}s`,
-              animationDuration: `${3 + Math.random() * 2}s`
-            }}
-          />
-        ))}
+        {[...Array(20)].map((_, i) => <div key={i} className="particle bg-primary/30 animate-float" style={{
+        left: `${Math.random() * 100}%`,
+        top: `${Math.random() * 100}%`,
+        animationDelay: `${Math.random() * 3}s`,
+        animationDuration: `${3 + Math.random() * 2}s`
+      }} />)}
       </div>
       {/* Video background */}
       <div className="absolute inset-0 z-0">
-        <video 
-          autoPlay 
-          muted 
-          loop 
-          className="w-full h-full object-cover opacity-20"
-          style={{ filter: 'hue-rotate(240deg) saturate(0.8)' }}
-        >
+        <video autoPlay muted loop className="w-full h-full object-cover opacity-20" style={{
+        filter: 'hue-rotate(240deg) saturate(0.8)'
+      }}>
           <source src="https://videos.pexels.com/video-files/3129671/3129671-uhd_2560_1440_30fps.mp4" type="video/mp4" />
         </video>
         <div className="absolute inset-0 bg-background/60" />
@@ -53,56 +39,81 @@ const Hero = () => {
       {/* Floating particles */}
       <div className="absolute inset-0 z-10">
         <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-primary/30 rounded-full animate-pulse animate-float" />
-        <div className="absolute top-1/3 right-1/3 w-1 h-1 bg-accent/40 rounded-full animate-pulse" style={{ animationDelay: '1s' }} />
-        <div className="absolute bottom-1/4 left-1/3 w-3 h-3 bg-secondary/20 rounded-full animate-pulse" style={{ animationDelay: '2s' }} />
-        <div className="absolute top-2/3 right-1/4 w-1.5 h-1.5 bg-primary/20 rounded-full animate-pulse animate-float" style={{ animationDelay: '3s' }} />
-        <div className="absolute bottom-1/3 right-2/3 w-2 h-2 bg-accent/30 rounded-full animate-pulse" style={{ animationDelay: '4s' }} />
+        <div className="absolute top-1/3 right-1/3 w-1 h-1 bg-accent/40 rounded-full animate-pulse" style={{
+        animationDelay: '1s'
+      }} />
+        <div className="absolute bottom-1/4 left-1/3 w-3 h-3 bg-secondary/20 rounded-full animate-pulse" style={{
+        animationDelay: '2s'
+      }} />
+        <div className="absolute top-2/3 right-1/4 w-1.5 h-1.5 bg-primary/20 rounded-full animate-pulse animate-float" style={{
+        animationDelay: '3s'
+      }} />
+        <div className="absolute bottom-1/3 right-2/3 w-2 h-2 bg-accent/30 rounded-full animate-pulse" style={{
+        animationDelay: '4s'
+      }} />
       </div>
 
       {/* Content */}
       <div className="relative z-20 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <div className="animate-slide-up">
           {/* Badge */}
-          <div className="inline-flex items-center px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-8 animate-bounce-in hover-glow cursor-pointer" style={{ animationDelay: '0.2s' }}>
+          <div className="inline-flex items-center px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-8 animate-bounce-in hover-glow cursor-pointer" style={{
+          animationDelay: '0.2s'
+        }}>
             <span className="text-sm font-medium text-primary">NEW GEN AI AUTOMATION PARTNER</span>
           </div>
 
-          <motion.h1 
-            className="text-5xl md:text-7xl lg:text-8xl font-bold text-foreground mb-6 leading-tight"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.4 }}
-          >
-            <motion.span
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.8, delay: 0.6 }}
-            >
+          <motion.h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-foreground mb-6 leading-tight" initial={{
+          opacity: 0,
+          y: 30
+        }} animate={{
+          opacity: 1,
+          y: 0
+        }} transition={{
+          duration: 1,
+          delay: 0.4
+        }}>
+            <motion.span initial={{
+            opacity: 0
+          }} animate={{
+            opacity: 1
+          }} transition={{
+            duration: 0.8,
+            delay: 0.6
+          }}>
               Automate Smarter.
             </motion.span>
-            <motion.span
-              className="block"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.8, delay: 0.8 }}
-            >
+            <motion.span className="block" initial={{
+            opacity: 0
+          }} animate={{
+            opacity: 1
+          }} transition={{
+            duration: 0.8,
+            delay: 0.8
+          }}>
               Grow Faster.
             </motion.span>
-            <motion.span 
-              className="block text-gradient italic animate-pulse-glow typing-animation"
-              initial={{ opacity: 0, width: 0 }}
-              animate={{ opacity: 1, width: "auto" }}
-              transition={{ duration: 1.2, delay: 1.2 }}
-            >
+            <motion.span className="block text-gradient italic animate-pulse-glow typing-animation" initial={{
+            opacity: 0,
+            width: 0
+          }} animate={{
+            opacity: 1,
+            width: "auto"
+          }} transition={{
+            duration: 1.2,
+            delay: 1.2
+          }}>
               With AI.
             </motion.span>
           </motion.h1>
           
-          <p className="text-xl md:text-2xl text-muted-foreground mb-12 max-w-2xl mx-auto leading-relaxed animate-fade-in" style={{ animationDelay: '0.6s' }}>
-            AI Automation for Modern Businesses Made Simple
-          </p>
+          <p className="text-xl md:text-2xl text-muted-foreground mb-12 max-w-2xl mx-auto leading-relaxed animate-fade-in" style={{
+          animationDelay: '0.6s'
+        }}>Your Digital Partner for the AI Age</p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16 animate-slide-up" style={{ animationDelay: '0.8s' }}>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16 animate-slide-up" style={{
+          animationDelay: '0.8s'
+        }}>
             <Button className="btn-premium text-lg px-8 py-4 rounded-lg hover-lift group">
               <span className="group-hover:animate-pulse">Book A Free Call</span>
               <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={20} />
@@ -110,7 +121,9 @@ const Hero = () => {
           </div>
 
           {/* Social Icons */}
-          <div className="flex justify-center gap-6 mt-8 animate-scale-in" style={{ animationDelay: '1s' }}>
+          <div className="flex justify-center gap-6 mt-8 animate-scale-in" style={{
+          animationDelay: '1s'
+        }}>
             <div className="w-10 h-10 rounded-lg bg-card border border-border flex items-center justify-center cursor-pointer hover-lift hover:bg-primary/10 transition-all duration-300">
               <span className="text-muted-foreground hover:text-primary transition-colors">𝕏</span>
             </div>
@@ -124,14 +137,10 @@ const Hero = () => {
 
           {/* Scroll indicator */}
           <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-            <div className="w-6 h-10 border-2 border-primary/30 rounded-full flex justify-center">
-              <div className="w-1 h-3 bg-primary/60 rounded-full mt-2 animate-pulse"></div>
-            </div>
+            
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default Hero;
