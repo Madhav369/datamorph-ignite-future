@@ -19,7 +19,12 @@ const Navigation = () => {
         <div className="flex justify-between items-center py-4">
           {/* Logo */}
           <div className="flex items-center">
-            <span className="text-2xl font-bold text-gradient">Datamorph</span>
+            <img 
+              src="/lovable-uploads/bb8d2770-544c-4241-baf1-15b2667e9b77.png" 
+              alt="DataMorph" 
+              className="h-10 w-auto"
+              style={{ background: 'transparent' }}
+            />
           </div>
 
           {/* Desktop Menu */}

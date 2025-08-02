@@ -12,10 +12,12 @@ import Testimonials from '@/components/Testimonials';
 import Pricing from '@/components/Pricing';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
+import CursorRipple from '@/components/CursorRipple';
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen">
+      <CursorRipple />
       <Navigation />
       <Hero />
       <About />

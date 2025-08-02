@@ -1,4 +1,4 @@
-import { Bot, Brain, TrendingUp, GraduationCap, PenTool, Megaphone, Video, Globe } from 'lucide-react';
+import { Bot, Brain, GraduationCap, Share2, PenTool, Target, TrendingUp, Globe } from 'lucide-react';
 
 const Solutions = () => {
   const solutions = [
@@ -15,57 +15,57 @@ const Solutions = () => {
       features: ["Domain-Specific Training", "Custom Integrations", "Scalable Architecture"]
     },
     {
-      icon: <TrendingUp className="w-12 h-12" />,
-      title: "Business Forecasting",
-      description: "Proprietary AI software that provides accurate predictions and strategic insights for informed decision-making.",
-      features: ["Predictive Analytics", "Market Intelligence", "Risk Assessment"]
-    },
-    {
       icon: <GraduationCap className="w-12 h-12" />,
       title: "AI Academy",
       description: "Premium training courses and certifications to empower your team with cutting-edge AI knowledge and skills.",
       features: ["Expert-Led Courses", "Industry Certifications", "Hands-on Projects"]
     },
     {
+      icon: <Share2 className="w-12 h-12" />,
+      title: "Social Media Management",
+      description: "Comprehensive social media strategy and brand management powered by AI insights and automation.",
+      features: ["Brand Strategy", "Content Scheduling", "Audience Analytics"]
+    },
+    {
       icon: <PenTool className="w-12 h-12" />,
       title: "Content Creation",
-      description: "AI-powered content generation and social media management that resonates with your audience.",
-      features: ["Brand Voice Training", "Multi-Platform Publishing", "Performance Analytics"]
+      description: "AI-powered content generation that resonates with your audience across all platforms and formats.",
+      features: ["Brand Voice Training", "Multi-Platform Publishing", "SEO Optimization"]
     },
     {
-      icon: <Megaphone className="w-12 h-12" />,
-      title: "Paid Media Campaigns",
-      description: "Expert-managed advertising campaigns optimized by AI for maximum ROI and audience engagement.",
-      features: ["AI Optimization", "Expert Management", "Real-time Reporting"]
+      icon: <Target className="w-12 h-12" />,
+      title: "Media Buying (Performance Marketing)",
+      description: "Data-driven advertising campaigns optimized by AI for maximum ROI and precise audience targeting.",
+      features: ["AI Optimization", "Cross-Platform Campaigns", "Real-time Analytics"]
     },
     {
-      icon: <Video className="w-12 h-12" />,
-      title: "AI Video Content",
-      description: "Revolutionary video content creation powered by artificial intelligence for engaging visual storytelling.",
-      features: ["Automated Editing", "Script Generation", "Multi-format Output"]
+      icon: <TrendingUp className="w-12 h-12" />,
+      title: "Business Strategy & Consultation",
+      description: "Strategic business guidance including forecasting, market analysis, and growth planning powered by AI.",
+      features: ["Business Forecasting", "Market Intelligence", "Growth Strategy"]
     },
     {
       icon: <Globe className="w-12 h-12" />,
-      title: "Website Development",
+      title: "Web Development",
       description: "AI-enhanced web development that creates intelligent, responsive, and conversion-optimized websites.",
       features: ["AI-Driven UX", "Smart Personalization", "Performance Optimization"]
     }
   ];
 
   return (
-    <section id="solutions" className="py-20 bg-muted/30">
+    <section id="solutions" className="py-32 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+        <div className="text-center mb-20">
+          <h2 className="text-4xl md:text-5xl font-bold mb-8">
             Our <span className="text-gradient">Solutions</span>
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
             Comprehensive AI solutions designed to transform every aspect of your business, 
             from operations to customer engagement.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           {solutions.map((solution, index) => (
             <div
               key={index}

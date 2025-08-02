@@ -63,48 +63,13 @@ const Hero = () => {
             <span className="text-sm font-medium text-primary">NEW GEN AI AUTOMATION PARTNER</span>
           </div>
 
-          <motion.h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-foreground mb-6 leading-tight" initial={{
-          opacity: 0,
-          y: 30
-        }} animate={{
-          opacity: 1,
-          y: 0
-        }} transition={{
-          duration: 1,
-          delay: 0.4
-        }}>
-            <motion.span initial={{
-            opacity: 0
-          }} animate={{
-            opacity: 1
-          }} transition={{
-            duration: 0.8,
-            delay: 0.6
-          }}>
-              Automate Smarter.
-            </motion.span>
-            <motion.span className="block" initial={{
-            opacity: 0
-          }} animate={{
-            opacity: 1
-          }} transition={{
-            duration: 0.8,
-            delay: 0.8
-          }}>
-              Grow Faster.
-            </motion.span>
-            <motion.span className="block text-gradient italic animate-pulse-glow typing-animation" initial={{
-            opacity: 0,
-            width: 0
-          }} animate={{
-            opacity: 1,
-            width: "auto"
-          }} transition={{
-            duration: 1.2,
-            delay: 1.2
-          }}>
-              With AI.
-            </motion.span>
+          <motion.h1 
+            className="text-5xl md:text-7xl lg:text-8xl font-bold text-foreground mb-8 leading-tight" 
+            initial={{ opacity: 0 }} 
+            animate={{ opacity: 1 }} 
+            transition={{ duration: 1.5, ease: "easeOut" }}
+          >
+            Automate smarter, grow faster with AI
           </motion.h1>
           
           <p className="text-xl md:text-2xl text-muted-foreground mb-12 max-w-2xl mx-auto leading-relaxed animate-fade-in" style={{

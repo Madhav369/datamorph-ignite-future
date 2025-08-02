@@ -10,7 +10,7 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 0 0% 5%; /* Dark background like reference */
+    --background: linear-gradient(90deg, #000000 0%, #3533cd 100%); /* Dark gradient background */
     --foreground: 0 0% 98%;
 
     --card: 0 0% 8%;
@@ -81,7 +81,7 @@ All colors MUST be HSL.
   }
 
   .dark {
-    --background: 0 0% 3%;
+    --background: linear-gradient(90deg, #000000 0%, #3533cd 100%);
     --foreground: 0 0% 98%;
 
     --card: 0 0% 6%;
@@ -125,8 +125,33 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground font-body antialiased;
+    background: var(--background);
+    @apply text-foreground font-body antialiased;
     font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  /* Cursor ripple effect */
+  .cursor-ripple {
+    position: fixed;
+    border-radius: 50%;
+    pointer-events: none;
+    background: radial-gradient(circle, hsl(var(--primary) / 0.3) 0%, transparent 70%);
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    animation: ripple 0.6s ease-out forwards;
+  }
+
+  @keyframes ripple {
+    0% {
+      width: 0;
+      height: 0;
+      opacity: 0.8;
+    }
+    100% {
+      width: 100px;
+      height: 100px;
+      opacity: 0;
+    }
   }
 
   h1, h2, h3, h4, h5, h6 {
