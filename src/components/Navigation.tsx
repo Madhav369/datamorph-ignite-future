@@ -6,10 +6,10 @@ const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const menuItems = [
-    { label: 'Services', href: '#services' },
+    { label: 'Services', href: '#solutions' },
     { label: 'Process', href: '#process' },
     { label: 'Pricing', href: '#pricing' },
-    { label: 'Blog', href: '#blog' },
+    { label: 'About', href: '#about' },
     { label: 'Contact', href: '#contact' },
   ];
 
@@ -20,9 +20,9 @@ const Navigation = () => {
           {/* Logo */}
           <div className="flex items-center">
             <img 
-              src="/lovable-uploads/bb8d2770-544c-4241-baf1-15b2667e9b77.png" 
+              src="/lovable-uploads/4de26b2a-7e25-4311-be3d-3964f6324d2b.png" 
               alt="DataMorph" 
-              className="h-10 w-auto"
+              className="h-12 w-auto"
               style={{ background: 'transparent' }}
             />
           </div>
