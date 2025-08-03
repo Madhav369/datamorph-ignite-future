@@ -22,7 +22,7 @@ const Navigation = () => {
             <img 
               src="/lovable-uploads/4de26b2a-7e25-4311-be3d-3964f6324d2b.png" 
               alt="DataMorph" 
-              className="h-12 w-auto"
+              className="h-20 w-auto"
               style={{ background: 'transparent' }}
             />
           </div>
