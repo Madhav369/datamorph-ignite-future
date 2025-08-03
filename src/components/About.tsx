@@ -1,5 +1,5 @@
 import { CheckCircle, Zap, Target, Users } from 'lucide-react';
-import aboutImage from '@/assets/about-us.jpg';
+import aiAutomationAnimation from '@/assets/ai-automation-animation.jpg';
 
 const About = () => {
   const values = [
@@ -76,16 +76,12 @@ const About = () => {
           <div className="relative animate-slide-in-right">
             <div className="relative">
               <div className="aspect-square rounded-2xl bg-gradient-to-br from-primary/20 to-accent/20 p-8 hover-lift">
-                <div className="w-full h-full rounded-xl bg-card/50 backdrop-blur-sm border border-border flex items-center justify-center">
-                  <div className="text-center">
-                    <div className="w-24 h-24 bg-primary/20 rounded-full mx-auto mb-6 flex items-center justify-center animate-pulse-glow">
-                      <span className="text-3xl">🤖</span>
-                    </div>
-                    <div className="space-y-2">
-                      <div className="text-sm font-medium text-primary">Madhav Bhattarai</div>
-                      <div className="text-xs text-muted-foreground">Co-founder & AI Strategy Lead</div>
-                    </div>
-                  </div>
+                <div className="w-full h-full rounded-xl overflow-hidden">
+                  <img 
+                    src={aiAutomationAnimation} 
+                    alt="AI Automation and Performance Marketing" 
+                    className="w-full h-full object-cover rounded-xl animate-pulse-glow"
+                  />
                 </div>
               </div>
               
