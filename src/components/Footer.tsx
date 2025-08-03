@@ -1,45 +1,25 @@
 import { Mail, Phone, MapPin, Linkedin, Twitter, Github } from 'lucide-react';
-
 const Footer = () => {
   const footerLinks = {
-    Solutions: [
-      "AI Workflow Automation",
-      "Custom AI Agents", 
-      "Business Forecasting",
-      "Content Creation",
-      "Video Content AI"
-    ],
-    Platform: [
-      "Features",
-      "Integrations",
-      "Security",
-      "API Documentation",
-      "Performance"
-    ],
-    Academy: [
-      "AI Fundamentals",
-      "ML Certification",
-      "Ethics & Governance",
-      "Corporate Training",
-      "Certifications"
-    ],
-    Company: [
-      "About Us",
-      "Careers",
-      "Press Kit",
-      "Contact",
-      "Privacy Policy"
-    ]
+    Solutions: ["AI Workflow Automation", "Custom AI Agents", "Business Forecasting", "Content Creation", "Video Content AI"],
+    Platform: ["Features", "Integrations", "Security", "API Documentation", "Performance"],
+    Academy: ["AI Fundamentals", "ML Certification", "Ethics & Governance", "Corporate Training", "Certifications"],
+    Company: ["About Us", "Careers", "Press Kit", "Contact", "Privacy Policy"]
   };
-
-  const socialLinks = [
-    { icon: <Linkedin className="w-5 h-5" />, href: "#", label: "LinkedIn" },
-    { icon: <Twitter className="w-5 h-5" />, href: "#", label: "Twitter" },
-    { icon: <Github className="w-5 h-5" />, href: "#", label: "GitHub" }
-  ];
-
-  return (
-    <footer className="bg-secondary text-secondary-foreground">
+  const socialLinks = [{
+    icon: <Linkedin className="w-5 h-5" />,
+    href: "#",
+    label: "LinkedIn"
+  }, {
+    icon: <Twitter className="w-5 h-5" />,
+    href: "#",
+    label: "Twitter"
+  }, {
+    icon: <Github className="w-5 h-5" />,
+    href: "#",
+    label: "GitHub"
+  }];
+  return <footer className="bg-secondary text-secondary-foreground">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Main Footer Content */}
         <div className="py-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8">
@@ -57,7 +37,7 @@ const Footer = () => {
             <div className="space-y-3">
               <div className="flex items-center gap-3 text-sm">
                 <Mail className="w-4 h-4 text-primary" />
-                <span>hello@datamorph.ai</span>
+                <span>hello@datamorph.co</span>
               </div>
               <div className="flex items-center gap-3 text-sm">
                 <Phone className="w-4 h-4 text-primary" />
@@ -71,23 +51,16 @@ const Footer = () => {
           </div>
 
           {/* Footer Links */}
-          {Object.entries(footerLinks).map(([title, links]) => (
-            <div key={title}>
+          {Object.entries(footerLinks).map(([title, links]) => <div key={title}>
               <h3 className="font-semibold text-white mb-4">{title}</h3>
               <ul className="space-y-3">
-                {links.map((link) => (
-                  <li key={link}>
-                    <a 
-                      href="#" 
-                      className="text-secondary-foreground/80 hover:text-white transition-colors text-sm"
-                    >
+                {links.map(link => <li key={link}>
+                    <a href="#" className="text-secondary-foreground/80 hover:text-white transition-colors text-sm">
                       {link}
                     </a>
-                  </li>
-                ))}
+                  </li>)}
               </ul>
-            </div>
-          ))}
+            </div>)}
         </div>
 
         {/* Newsletter Signup */}
@@ -103,11 +76,7 @@ const Footer = () => {
             </div>
             
             <div className="flex gap-2 w-full lg:w-auto lg:min-w-[400px]">
-              <input
-                type="email"
-                placeholder="Enter your email"
-                className="flex-1 px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder:text-white/60 focus:outline-none focus:ring-2 focus:ring-primary"
-              />
+              <input type="email" placeholder="Enter your email" className="flex-1 px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder:text-white/60 focus:outline-none focus:ring-2 focus:ring-primary" />
               <button className="px-6 py-3 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 transition-colors">
                 Subscribe
               </button>
@@ -123,16 +92,9 @@ const Footer = () => {
           
           <div className="flex items-center gap-6">
             <div className="flex gap-4">
-              {socialLinks.map((social, index) => (
-                <a
-                  key={index}
-                  href={social.href}
-                  aria-label={social.label}
-                  className="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center text-white hover:bg-primary hover:scale-110 transition-all duration-300"
-                >
+              {socialLinks.map((social, index) => <a key={index} href={social.href} aria-label={social.label} className="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center text-white hover:bg-primary hover:scale-110 transition-all duration-300">
                   {social.icon}
-                </a>
-              ))}
+                </a>)}
             </div>
             
             <div className="flex gap-4 text-sm text-secondary-foreground/60">
@@ -143,8 +105,6 @@ const Footer = () => {
           </div>
         </div>
       </div>
-    </footer>
-  );
+    </footer>;
 };
-
 export default Footer;
