@@ -1,23 +1,23 @@
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 import { cn } from '@/lib/utils';
 
-const tools: { name: string; description: string }[] = [
-  { name: 'OpenAI (GPT-5)', description: 'Advanced language and reasoning models for automation.' },
-  { name: 'Claude (Anthropic)', description: 'Reliable, safe AI for complex workflows.' },
-  { name: 'Google Gemini', description: 'Multimodal AI for search, vision, and data tasks.' },
-  { name: 'Microsoft Copilot / Azure AI', description: 'Enterprise-grade AI and automation on Azure.' },
-  { name: 'Notion AI', description: 'Knowledge ops and internal documentation automation.' },
-  { name: 'Slack AI', description: 'Embedded assistants and workflows in Slack.' },
-  { name: 'N8N', description: 'Open-source workflow automation with nodes.' },
-  { name: 'Zapier', description: 'Fast no-code integrations and automations.' },
-  { name: 'Make.com', description: 'Visual automation builder for complex flows.' },
-  { name: 'Salesforce Einstein', description: 'AI in CRM for sales and service.' },
-  { name: 'HubSpot AI', description: 'AI content, scoring, and CRM workflows.' },
-  { name: 'Airtable Automations', description: 'Data pipelines and lightweight apps.' },
-  { name: 'Typeform AI', description: 'AI forms and conversational data capture.' },
-  { name: 'ElevenLabs', description: 'Realistic AI voice for assistants and content.' },
-  { name: 'RunwayML', description: 'Video generation and editing with AI.' },
-  { name: 'Midjourney', description: 'High-quality image generation for brand assets.' },
+const tools: { name: string; description: string; url: string }[] = [
+  { name: 'OpenAI (GPT-5)', description: 'Advanced language and reasoning models for automation.', url: 'https://cdn.simpleicons.org/openai' },
+  { name: 'Claude (Anthropic)', description: 'Reliable, safe AI for complex workflows.', url: 'https://cdn.simpleicons.org/anthropic' },
+  { name: 'Google Gemini', description: 'Multimodal AI for search, vision, and data tasks.', url: 'https://cdn.simpleicons.org/googlegemini' },
+  { name: 'Microsoft Copilot / Azure AI', description: 'Enterprise-grade AI and automation on Azure.', url: 'https://cdn.simpleicons.org/microsoft' },
+  { name: 'Notion AI', description: 'Knowledge ops and internal documentation automation.', url: 'https://cdn.simpleicons.org/notion' },
+  { name: 'Slack AI', description: 'Embedded assistants and workflows in Slack.', url: 'https://cdn.simpleicons.org/slack' },
+  { name: 'N8N', description: 'Open-source workflow automation with nodes.', url: 'https://cdn.simpleicons.org/n8n' },
+  { name: 'Zapier', description: 'Fast no-code integrations and automations.', url: 'https://cdn.simpleicons.org/zapier' },
+  { name: 'Make.com', description: 'Visual automation builder for complex flows.', url: 'https://cdn.simpleicons.org/integromat' },
+  { name: 'Salesforce Einstein', description: 'AI in CRM for sales and service.', url: 'https://cdn.simpleicons.org/salesforce' },
+  { name: 'HubSpot AI', description: 'AI content, scoring, and CRM workflows.', url: 'https://cdn.simpleicons.org/hubspot' },
+  { name: 'Airtable Automations', description: 'Data pipelines and lightweight apps.', url: 'https://cdn.simpleicons.org/airtable' },
+  { name: 'Typeform AI', description: 'AI forms and conversational data capture.', url: 'https://cdn.simpleicons.org/typeform' },
+  { name: 'ElevenLabs', description: 'Realistic AI voice for assistants and content.', url: 'https://cdn.simpleicons.org/elevenlabs' },
+  { name: 'RunwayML', description: 'Video generation and editing with AI.', url: 'https://cdn.simpleicons.org/runwayml' },
+  { name: 'Midjourney', description: 'High-quality image generation for brand assets.', url: 'https://cdn.simpleicons.org/midjourney' },
 ];
 
 const ToolsWeUse = () => {
@@ -38,13 +38,18 @@ const ToolsWeUse = () => {
                 <TooltipTrigger asChild>
                   <div
                     className={cn(
-                      'p-4 rounded-xl border border-border bg-card/60 text-center hover-scale hover:shadow-glow cursor-pointer card-premium',
+                      'group p-4 rounded-xl border border-border bg-card/60 text-center hover-scale hover:shadow-glow cursor-pointer card-premium',
                       'animate-fade-in animate-float'
                     )}
                     style={{ animationDelay: `${i * 40}ms` }}
                     aria-label={tool.name}
                   >
-                    <span className="block text-sm font-medium">{tool.name}</span>
+                    <img
+                      src={tool.url}
+                      alt={`${tool.name} logo`}
+                      loading="lazy"
+                      className="h-8 w-auto md:h-10 mx-auto opacity-90 transition-opacity group-hover:opacity-100"
+                    />
                   </div>
                 </TooltipTrigger>
                 <TooltipContent>
