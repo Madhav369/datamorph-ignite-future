@@ -6,10 +6,11 @@ const Stats = () => {
   const isInView = useInView(ref, { once: true });
 
   const stats = [
-    { number: 500, suffix: '+', label: 'Businesses Automated', icon: '🏢' },
-    { number: 98, suffix: '%', label: 'Client Satisfaction', icon: '⭐' },
-    { number: 10, suffix: 'x', label: 'Average ROI Increase', icon: '📈' },
-    { number: 24, suffix: '/7', label: 'AI Support Available', icon: '🤖' }
+    { number: 100, suffix: '+', label: 'Business Automation Projects', icon: '🧩' },
+    { number: 3, suffix: 'x', label: 'Avg. Client ROI with AI', icon: '📈' },
+    { number: 1200, suffix: '+', label: 'Hours Saved via Automation', icon: '⏱️' },
+    { number: 20, suffix: '+', label: 'Industries Served', icon: '🌍' },
+    { number: 98, suffix: '%', label: 'Client Retention Rate', icon: '🔁' }
   ];
 
   const Counter = ({ number, suffix, isVisible }: { number: number; suffix: string; isVisible: boolean }) => {
@@ -60,8 +61,7 @@ const Stats = () => {
           </p>
         </motion.div>
 
-        {/* Stats Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-8">
           {stats.map((stat, index) => (
             <motion.div
               key={index}

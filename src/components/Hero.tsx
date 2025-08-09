@@ -74,7 +74,7 @@ const Hero = () => {
           
           <p className="text-xl md:text-2xl text-muted-foreground mb-12 max-w-2xl mx-auto leading-relaxed animate-fade-in" style={{
           animationDelay: '0.6s'
-        }}>Your Digital Partner for the AI Age</p>
+        }}>We help you create your AI employee — designed, trained, and managed to run your ops 24/7.</p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16 animate-slide-up" style={{
           animationDelay: '0.8s'

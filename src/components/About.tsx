@@ -37,17 +37,18 @@ const About = () => {
           {/* Content */}
           <div className="animate-slide-in-left">
             <div className="inline-block px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6">
-              <span className="text-sm font-medium text-primary uppercase tracking-wide">WE ANALYZE YOUR DATA</span>
+              <span className="text-sm font-medium text-primary uppercase tracking-wide">WHO WE ARE</span>
             </div>
             
             <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6 leading-tight">
-              We find what to automate, who your users are & how AI can optimize your workflow.
-              <span className="text-primary"> Best part is we also build and launch real solutions.</span>
+              We build your AI employee — and manage it end-to-end.
+              <span className="text-primary"> We find growth opportunities and automate what matters.</span>
             </h2>
             
             <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
-              Our expert team analyzes your current operations to identify automation opportunities 
-              and implement AI solutions that drive measurable results.
+              We’re a team of tech and business experts who act as an extension of your company —
+              identifying growth levers, designing AI systems, and deploying automation that runs 24/7.
+              Your operations get faster, clearer, and more profitable.
             </p>
 
             <div className="space-y-4 mb-8">
@@ -79,7 +80,8 @@ const About = () => {
                 <div className="w-full h-full rounded-xl overflow-hidden">
                   <img 
                     src={aiAutomationAnimation} 
-                    alt="AI Automation and Performance Marketing" 
+                    alt="AI Automation and Performance Marketing animation"
+                    loading="lazy" decoding="async"
                     className="w-full h-full object-cover rounded-xl animate-pulse-glow"
                   />
                 </div>
