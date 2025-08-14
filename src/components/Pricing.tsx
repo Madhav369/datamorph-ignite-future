@@ -1,51 +1,57 @@
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Textarea } from '@/components/ui/textarea';
+import { Checkbox } from '@/components/ui/checkbox';
 import { Check } from 'lucide-react';
 
 const Pricing = () => {
-  const [isYearly, setIsYearly] = useState(false);
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    company: '',
+    phone: '',
+    requirements: {
+      automation: false,
+      paidAds: false,
+      socialMediaManagement: false,
+      contentCreation: false,
+      dataAnalytics: false,
+      crmIntegration: false
+    },
+    additionalDetails: ''
+  });
 
-  const plans = [
-    {
-      name: "Starter",
-      price: isYearly ? 40 : 50,
-      period: isYearly ? "/year" : "/month",
-      popular: false,
-      features: [
-        "3 Automated Workflows",
-        "Basic AI Assistant Access", 
-        "Email + Slack Integration",
-        "Monthly Performance Reports",
-        "Email Support"
-      ]
-    },
-    {
-      name: "Pro",
-      price: isYearly ? 72 : 90,
-      period: isYearly ? "/year" : "/month", 
-      popular: true,
-      features: [
-        "10+ Automated Workflows",
-        "Advanced AI Assistant Features",
-        "Bi-Weekly Strategy Reviews", 
-        "CRM + Marketing Tool Integrations",
-        "Priority Support"
-      ]
-    },
-    {
-      name: "Enterprise",
-      price: "Custom",
-      period: "",
-      popular: false,
-      features: [
-        "Unlimited Custom Workflows",
-        "Dedicated AI Strategist",
-        "API & Private Integrations",
-        "Real-Time Performance Dashboards", 
-        "24/7 Premium Support + SLA"
-      ]
-    }
-  ];
+  const handleInputChange = (field: string, value: string) => {
+    setFormData(prev => ({ ...prev, [field]: value }));
+  };
+
+  const handleRequirementChange = (requirement: string, checked: boolean) => {
+    setFormData(prev => ({
+      ...prev,
+      requirements: { ...prev.requirements, [requirement]: checked }
+    }));
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    console.log('Form submitted:', formData);
+    // Handle form submission here
+  };
+
+  const plan = {
+    name: "Custom Enterprise Solution",
+    features: [
+      "Unlimited Custom Workflows",
+      "Dedicated AI Strategist",
+      "API & Private Integrations",
+      "Real-Time Performance Dashboards", 
+      "24/7 Premium Support + SLA",
+      "Tailored to Your Business Needs"
+    ]
+  };
 
   return (
     <section id="pricing" className="py-24 bg-background">
@@ -56,91 +62,145 @@ const Pricing = () => {
             <span className="text-sm font-medium text-primary uppercase tracking-wide">PRICING</span>
           </div>
           <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-            Flexible Plans for Everyone
+            Custom Enterprise Solution
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
-            Choose a plan that fits your goals and scale as you grow
+            Get a tailored solution designed specifically for your business needs
           </p>
-
-          {/* Toggle */}
-          <div className="flex items-center justify-center gap-4 mb-12">
-            <span className={`font-medium ${!isYearly ? 'text-foreground' : 'text-muted-foreground'}`}>
-              Monthly
-            </span>
-            <button
-              onClick={() => setIsYearly(!isYearly)}
-              className={`relative w-12 h-6 rounded-full transition-colors ${
-                isYearly ? 'bg-primary' : 'bg-muted'
-              }`}
-            >
-              <div
-                className={`absolute top-0.5 w-5 h-5 bg-white rounded-full transition-transform ${
-                  isYearly ? 'translate-x-6' : 'translate-x-0.5'
-                }`}
-              />
-            </button>
-            <span className={`font-medium ${isYearly ? 'text-foreground' : 'text-muted-foreground'}`}>
-              Yearly
-            </span>
-            {isYearly && (
-              <span className="px-2 py-1 bg-accent text-accent-foreground text-sm rounded-full font-medium">
-                Save 20%
-              </span>
-            )}
-          </div>
         </div>
 
-        {/* Pricing Cards */}
-        <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-          {plans.map((plan, index) => (
-            <div
-              key={index}
-              className={`relative p-8 rounded-2xl border transition-all duration-300 hover:scale-105 ${
-                plan.popular
-                  ? 'bg-primary/5 border-primary shadow-glow'
-                  : 'bg-card border-border hover:shadow-card'
-              }`}
-            >
-              {/* Popular Badge */}
-              {plan.popular && (
-                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                  <span className="px-4 py-2 bg-primary text-primary-foreground text-sm font-medium rounded-full">
-                    Popular
-                  </span>
-                </div>
-              )}
-
-              {/* Plan Name */}
-              <h3 className="text-2xl font-bold text-foreground mb-2">{plan.name}</h3>
-
-              {/* Price */}
-              <div className="mb-6">
-                <span className="text-4xl font-bold text-foreground">
-                  {typeof plan.price === 'number' ? `$${plan.price}` : plan.price}
-                </span>
-                <span className="text-muted-foreground">{plan.period}</span>
-              </div>
-
-              {/* CTA Button */}
-              <Button 
-                className={`w-full mb-8 ${
-                  plan.popular ? 'btn-premium' : 'btn-outline'
-                }`}
-              >
-                Get Started
-              </Button>
-
-              {/* Features */}
-              <ul className="space-y-4">
-                {plan.features.map((feature, featureIndex) => (
-                  <li key={featureIndex} className="flex items-start gap-3">
-                    <Check className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                    <span className="text-muted-foreground">{feature}</span>
-                  </li>
-                ))}
-              </ul>
+        {/* Custom Plan Card */}
+        <div className="max-w-lg mx-auto">
+          <div className="relative p-8 rounded-2xl border bg-primary/5 border-primary shadow-glow">
+            {/* Popular Badge */}
+            <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
+              <span className="px-4 py-2 bg-primary text-primary-foreground text-sm font-medium rounded-full">
+                Recommended
+              </span>
             </div>
-          ))}
+
+            {/* Plan Name */}
+            <h3 className="text-2xl font-bold text-foreground mb-2 text-center">{plan.name}</h3>
+
+            {/* Price */}
+            <div className="mb-6 text-center">
+              <span className="text-4xl font-bold text-foreground">Custom Quote</span>
+              <p className="text-muted-foreground mt-2">Based on your specific requirements</p>
+            </div>
+
+            {/* CTA Button with Form */}
+            <Dialog>
+              <DialogTrigger asChild>
+                <Button className="w-full mb-8 bg-primary text-primary-foreground hover:bg-primary/90">
+                  Get Custom Quote
+                </Button>
+              </DialogTrigger>
+              <DialogContent className="max-w-2xl">
+                <DialogHeader>
+                  <DialogTitle>Tell Us About Your Requirements</DialogTitle>
+                  <DialogDescription>
+                    Fill out this form and we'll create a custom solution tailored to your business needs.
+                  </DialogDescription>
+                </DialogHeader>
+                
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  {/* Personal Details */}
+                  <div className="grid grid-cols-2 gap-4">
+                    <div>
+                      <Label htmlFor="name">Full Name *</Label>
+                      <Input
+                        id="name"
+                        value={formData.name}
+                        onChange={(e) => handleInputChange('name', e.target.value)}
+                        required
+                      />
+                    </div>
+                    <div>
+                      <Label htmlFor="email">Email *</Label>
+                      <Input
+                        id="email"
+                        type="email"
+                        value={formData.email}
+                        onChange={(e) => handleInputChange('email', e.target.value)}
+                        required
+                      />
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-2 gap-4">
+                    <div>
+                      <Label htmlFor="company">Company Name</Label>
+                      <Input
+                        id="company"
+                        value={formData.company}
+                        onChange={(e) => handleInputChange('company', e.target.value)}
+                      />
+                    </div>
+                    <div>
+                      <Label htmlFor="phone">Phone Number</Label>
+                      <Input
+                        id="phone"
+                        value={formData.phone}
+                        onChange={(e) => handleInputChange('phone', e.target.value)}
+                      />
+                    </div>
+                  </div>
+
+                  {/* Services Required */}
+                  <div>
+                    <Label className="text-base font-medium">Services Required</Label>
+                    <div className="grid grid-cols-2 gap-3 mt-3">
+                      {[
+                        { key: 'automation', label: 'AI Automation' },
+                        { key: 'paidAds', label: 'Paid Advertising' },
+                        { key: 'socialMediaManagement', label: 'Social Media Management' },
+                        { key: 'contentCreation', label: 'Content Creation' },
+                        { key: 'dataAnalytics', label: 'Data Analytics' },
+                        { key: 'crmIntegration', label: 'CRM Integration' }
+                      ].map((service) => (
+                        <div key={service.key} className="flex items-center space-x-2">
+                          <Checkbox
+                            id={service.key}
+                            checked={formData.requirements[service.key as keyof typeof formData.requirements]}
+                            onCheckedChange={(checked) => 
+                              handleRequirementChange(service.key, checked as boolean)
+                            }
+                          />
+                          <Label htmlFor={service.key} className="text-sm">{service.label}</Label>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Additional Details */}
+                  <div>
+                    <Label htmlFor="details">Additional Requirements</Label>
+                    <Textarea
+                      id="details"
+                      placeholder="Tell us more about your specific needs, goals, and any other requirements..."
+                      value={formData.additionalDetails}
+                      onChange={(e) => handleInputChange('additionalDetails', e.target.value)}
+                      rows={4}
+                    />
+                  </div>
+
+                  <Button type="submit" className="w-full bg-primary text-primary-foreground hover:bg-primary/90">
+                    Submit Requirements
+                  </Button>
+                </form>
+              </DialogContent>
+            </Dialog>
+
+            {/* Features */}
+            <ul className="space-y-4">
+              {plan.features.map((feature, featureIndex) => (
+                <li key={featureIndex} className="flex items-start gap-3">
+                  <Check className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
+                  <span className="text-muted-foreground">{feature}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
 
         {/* Bottom Note */}
