@@ -1,85 +1,101 @@
 import React from 'react';
+import openaiLogo from '@/assets/logos/openai.svg';
+import claudeLogo from '@/assets/logos/claude.svg';
+import geminiLogo from '@/assets/logos/gemini.svg';
+import notionLogo from '@/assets/logos/notion.svg';
+import n8nLogo from '@/assets/logos/n8n.ico';
+import makeLogo from '@/assets/logos/make.ico';
+import zapierLogo from '@/assets/logos/zapier.png';
+import analyticsLogo from '@/assets/logos/analytics.ico';
+import googleAdsLogo from '@/assets/logos/google-ads.svg';
+import metaLogo from '@/assets/logos/meta.svg';
+import hubspotLogo from '@/assets/logos/hubspot.svg';
+import salesforceLogo from '@/assets/logos/salesforce.svg';
+import slackLogo from '@/assets/logos/slack.svg';
+import teamsLogo from '@/assets/logos/teams.svg';
+import airtableLogo from '@/assets/logos/airtable.svg';
+import typeformLogo from '@/assets/logos/typeform.png';
 
 const Tools = () => {
   const tools = [
     {
       name: "OpenAI",
-      logo: "https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg",
+      logo: openaiLogo,
       category: "AI Models"
     },
     {
       name: "Claude",
-      logo: "https://anthropic.com/images/icons/apple-touch-icon.png",
+      logo: claudeLogo,
       category: "AI Models"
     },
     {
       name: "Google Gemini",
-      logo: "https://www.gstatic.com/lamda/images/favicon_v1_150160cddceafb39e7a11ec5.svg",
+      logo: geminiLogo,
       category: "AI Models"
     },
     {
       name: "Notion",
-      logo: "https://upload.wikimedia.org/wikipedia/commons/e/e9/Notion-logo.svg",
+      logo: notionLogo,
       category: "Productivity"
     },
     {
       name: "N8N",
-      logo: "https://docs.n8n.io/assets/images/n8n-logo.png",
+      logo: n8nLogo,
       category: "Automation"
     },
     {
       name: "Make",
-      logo: "https://www.make.com/en/help/image/loio7c78c6dc-b4d2-49e4-898a-9c10c6ba4d89.png",
+      logo: makeLogo,
       category: "Automation"
     },
     {
       name: "Zapier",
-      logo: "https://cdn.zapier.com/zapier/images/logos/zapier-logo-294x68.png",
+      logo: zapierLogo,
       category: "Automation"
     },
     {
       name: "Google Analytics",
-      logo: "https://www.google.com/analytics/images/google-analytics-logo.png",
+      logo: analyticsLogo,
       category: "Analytics"
     },
     {
       name: "Google Ads",
-      logo: "https://upload.wikimedia.org/wikipedia/commons/c/c7/Google_Ads_logo.svg",
+      logo: googleAdsLogo,
       category: "Advertising"
     },
     {
       name: "Meta Ads",
-      logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Meta_Platforms_Inc._logo.svg/1200px-Meta_Platforms_Inc._logo.svg.png",
+      logo: metaLogo,
       category: "Advertising"
     },
     {
       name: "HubSpot",
-      logo: "https://www.hubspot.com/hs-fs/hubfs/HubSpot_Logos/HubSpot-Inversed-Favicon.png",
+      logo: hubspotLogo,
       category: "CRM"
     },
     {
       name: "Salesforce",
-      logo: "https://upload.wikimedia.org/wikipedia/commons/f/f9/Salesforce.com_logo.svg",
+      logo: salesforceLogo,
       category: "CRM"
     },
     {
       name: "Slack",
-      logo: "https://upload.wikimedia.org/wikipedia/commons/d/d5/Slack_icon_2019.svg",
+      logo: slackLogo,
       category: "Communication"
     },
     {
       name: "Microsoft Teams",
-      logo: "https://upload.wikimedia.org/wikipedia/commons/c/c9/Microsoft_Office_Teams_%282018%E2%80%93present%29.svg",
+      logo: teamsLogo,
       category: "Communication"
     },
     {
       name: "Airtable",
-      logo: "https://upload.wikimedia.org/wikipedia/commons/4/4b/Airtable_Logo.svg",
+      logo: airtableLogo,
       category: "Database"
     },
     {
       name: "Typeform",
-      logo: "https://images.typeform.com/images/2dpnUBBkz2VN",
+      logo: typeformLogo,
       category: "Forms"
     }
   ];
