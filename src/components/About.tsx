@@ -52,7 +52,7 @@ const About = () => {
                 <div className="w-8 h-8 bg-primary/20 rounded-full flex items-center justify-center">
                   <span className="text-primary font-bold">✓</span>
                 </div>
-                <span className="text-foreground font-medium">Growth </span>
+                <span className="text-foreground font-medium">Growth Marketing and Digital Identity </span>
               </div>
               <div className="flex items-center gap-3 p-4 rounded-lg bg-background/50 border border-border hover-glow transition-all duration-300 animate-fade-in" style={{
               animationDelay: '0.6s'
