@@ -85,30 +85,30 @@ const QuoteForm: React.FC<QuoteFormProps> = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 bg-background/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-      <div className="bg-card border border-border rounded-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto">
+    <div className="fixed inset-0 bg-background/80 backdrop-blur-sm z-50 flex items-center justify-center p-2 sm:p-4">
+      <div className="bg-card border border-border rounded-2xl w-full max-w-2xl max-h-[95vh] sm:max-h-[90vh] overflow-y-auto">
         {/* Header */}
-        <div className="flex items-center justify-between p-6 border-b border-border">
-          <div>
-            <h2 className="text-2xl font-bold text-foreground">Get Your Custom Quote</h2>
-            <p className="text-muted-foreground">Tell us about your project and we'll provide a tailored solution</p>
+        <div className="flex items-start justify-between p-4 sm:p-6 border-b border-border">
+          <div className="flex-1 pr-4">
+            <h2 className="text-xl sm:text-2xl font-bold text-foreground">Get Your Custom Quote</h2>
+            <p className="text-sm sm:text-base text-muted-foreground mt-1">Tell us about your project and we'll provide a tailored solution</p>
           </div>
           <Button
             variant="ghost"
             size="icon"
             onClick={onClose}
-            className="h-8 w-8"
+            className="h-8 w-8 shrink-0"
           >
             <X className="h-4 w-4" />
           </Button>
         </div>
 
         {/* Form */}
-        <form onSubmit={handleSubmit} className="p-6 space-y-6">
+        <form onSubmit={handleSubmit} className="p-4 sm:p-6 space-y-4 sm:space-y-6">
           {/* Personal Information */}
-          <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-foreground">Contact Information</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="space-y-3 sm:space-y-4">
+            <h3 className="text-base sm:text-lg font-semibold text-foreground">Contact Information</h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
               <div>
                 <label className="block text-sm font-medium mb-2 text-foreground">
                   Full Name <span className="text-destructive">*</span>
@@ -136,7 +136,7 @@ const QuoteForm: React.FC<QuoteFormProps> = ({ isOpen, onClose }) => {
               </div>
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
               <div>
                 <label className="block text-sm font-medium mb-2 text-foreground">
                   Company <span className="text-destructive">*</span>
@@ -172,17 +172,17 @@ const QuoteForm: React.FC<QuoteFormProps> = ({ isOpen, onClose }) => {
           </div>
 
           {/* Services */}
-          <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-foreground">Services Needed</h3>
-            <div className="grid grid-cols-2 gap-3">
+          <div className="space-y-3 sm:space-y-4">
+            <h3 className="text-base sm:text-lg font-semibold text-foreground">Services Needed</h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3">
               {services.map((service) => (
-                <div key={service} className="flex items-center space-x-3">
+                <div key={service} className="flex items-center space-x-2 sm:space-x-3">
                   <Checkbox
                     id={service}
                     checked={formData.services.includes(service)}
                     onCheckedChange={(checked) => handleServiceChange(service, checked as boolean)}
                   />
-                  <label htmlFor={service} className="text-sm text-foreground cursor-pointer">
+                  <label htmlFor={service} className="text-xs sm:text-sm text-foreground cursor-pointer flex-1">
                     {service}
                   </label>
                 </div>
@@ -191,8 +191,8 @@ const QuoteForm: React.FC<QuoteFormProps> = ({ isOpen, onClose }) => {
           </div>
 
           {/* Project Details */}
-          <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-foreground">Project Details</h3>
+          <div className="space-y-3 sm:space-y-4">
+            <h3 className="text-base sm:text-lg font-semibold text-foreground">Project Details</h3>
             <div>
               <label className="block text-sm font-medium mb-2 text-foreground">
                 Project Description & Requirements
@@ -206,7 +206,7 @@ const QuoteForm: React.FC<QuoteFormProps> = ({ isOpen, onClose }) => {
               />
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
               <div>
                 <label className="block text-sm font-medium mb-2 text-foreground">Budget Range</label>
                 <Input
@@ -229,7 +229,7 @@ const QuoteForm: React.FC<QuoteFormProps> = ({ isOpen, onClose }) => {
           </div>
 
           {/* Submit Button */}
-          <div className="flex gap-4 pt-4">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-2 sm:pt-4">
             <Button
               type="button"
               variant="outline"

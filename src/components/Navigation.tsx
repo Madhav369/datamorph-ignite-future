@@ -22,7 +22,7 @@ const Navigation = () => {
             <img 
               src="/lovable-uploads/4de26b2a-7e25-4311-be3d-3964f6324d2b.png" 
               alt="DataMorph" 
-              className="h-20 w-auto"
+              className="h-16 sm:h-20 w-auto"
               style={{ background: 'transparent' }}
             />
           </div>
@@ -60,7 +60,7 @@ const Navigation = () => {
         {/* Mobile Menu */}
         {isMenuOpen && (
           <div className="md:hidden">
-            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-background/95 backdrop-blur-sm rounded-lg mt-2">
+            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-background/95 backdrop-blur-sm rounded-lg mt-2 safe-area-mobile">
               {menuItems.map((item) => (
                 <a
                   key={item.label}
