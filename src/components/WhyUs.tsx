@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Shield, Award, Users, Zap, Brain, CheckCircle } from 'lucide-react';
+import QuoteForm from './QuoteForm';
 
 const WhyUs = () => {
+  const [isQuoteFormOpen, setIsQuoteFormOpen] = useState(false);
   const reasons = [
     {
       icon: Shield,
@@ -141,8 +143,11 @@ const WhyUs = () => {
               Join 500+ companies that trust us with their AI automation
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="btn-premium px-8 py-3">
-                Get Free Consultation
+              <button 
+                className="btn-premium px-8 py-3"
+                onClick={() => setIsQuoteFormOpen(true)}
+              >
+                Get Quote
               </button>
               <button className="btn-secondary px-8 py-3">
                 View Case Studies
@@ -151,6 +156,11 @@ const WhyUs = () => {
           </div>
         </motion.div>
       </div>
+      
+      <QuoteForm 
+        isOpen={isQuoteFormOpen} 
+        onClose={() => setIsQuoteFormOpen(false)} 
+      />
     </section>
   );
 };

@@ -38,7 +38,12 @@ const Navigation = () => {
                 {item.label}
               </a>
             ))}
-            <Button className="btn-premium">Get Template</Button>
+            <Button 
+              className="btn-premium" 
+              onClick={() => window.open('https://calendly.com', '_blank')}
+            >
+              Book a Call
+            </Button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -67,7 +72,12 @@ const Navigation = () => {
                 </a>
               ))}
               <div className="px-3 py-2">
-                <Button className="btn-premium w-full">Get Template</Button>
+                <Button 
+                  className="btn-premium w-full"
+                  onClick={() => window.open('https://calendly.com', '_blank')}
+                >
+                  Book a Call
+                </Button>
               </div>
             </div>
           </div>

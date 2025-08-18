@@ -1,9 +1,12 @@
+import React, { useState } from 'react';
 import { ArrowRight, Mail, Phone, MapPin, Calendar } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
+import QuoteForm from './QuoteForm';
 
 const Contact = () => {
+  const [isQuoteFormOpen, setIsQuoteFormOpen] = useState(false);
   const contactInfo = [
     {
       icon: <Mail className="w-6 h-6" />,
@@ -78,8 +81,11 @@ const Contact = () => {
                 />
               </div>
 
-              <Button className="btn-premium w-full text-lg h-14">
-                Book Your Demo
+              <Button 
+                className="btn-premium w-full text-lg h-14"
+                onClick={() => setIsQuoteFormOpen(true)}
+              >
+                Get Quote
                 <ArrowRight className="ml-2" size={20} />
               </Button>
             </form>
@@ -118,17 +124,29 @@ const Contact = () => {
                 Join hundreds of companies already leveraging AI for competitive advantage.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button className="btn-premium bg-white text-primary hover:bg-white/90">
-                  Schedule Demo
+                <Button 
+                  className="btn-premium bg-white text-primary hover:bg-white/90"
+                  onClick={() => setIsQuoteFormOpen(true)}
+                >
+                  Get Quote
                 </Button>
-                <Button variant="outline" className="border-white text-white hover:bg-white hover:text-primary">
-                  Download Brochure
+                <Button 
+                  variant="outline" 
+                  className="border-white text-white hover:bg-white hover:text-primary"
+                  onClick={() => window.open('https://calendly.com', '_blank')}
+                >
+                  Book a Call
                 </Button>
               </div>
             </div>
           </div>
         </div>
       </div>
+      
+      <QuoteForm 
+        isOpen={isQuoteFormOpen} 
+        onClose={() => setIsQuoteFormOpen(false)} 
+      />
     </section>
   );
 };

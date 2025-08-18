@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, TrendingUp, Clock, DollarSign } from 'lucide-react';
+import QuoteForm from './QuoteForm';
 
 const CaseStudies = () => {
+  const [isQuoteFormOpen, setIsQuoteFormOpen] = useState(false);
   const caseStudies = [
     {
       company: "TechCorp Solutions",
@@ -166,12 +168,20 @@ const CaseStudies = () => {
             <p className="text-muted-foreground mb-6">
               Join these industry leaders and transform your business with AI automation
             </p>
-            <button className="btn-premium px-8 py-3">
-              Start Your Transformation
+            <button 
+              className="btn-premium px-8 py-3"
+              onClick={() => setIsQuoteFormOpen(true)}
+            >
+              Get Quote
             </button>
           </div>
         </motion.div>
       </div>
+      
+      <QuoteForm 
+        isOpen={isQuoteFormOpen} 
+        onClose={() => setIsQuoteFormOpen(false)} 
+      />
     </section>
   );
 };
