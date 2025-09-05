@@ -92,20 +92,6 @@ const Hero = () => {
             </Button>
           </div>
 
-          {/* Social Icons */}
-          <div className="flex justify-center gap-6 mt-8 animate-scale-in" style={{
-          animationDelay: '1s'
-        }}>
-            <div className="w-10 h-10 rounded-lg bg-card border border-border flex items-center justify-center cursor-pointer hover-lift hover:bg-primary/10 transition-all duration-300">
-              <span className="text-muted-foreground hover:text-primary transition-colors">𝕏</span>
-            </div>
-            <div className="w-10 h-10 rounded-lg bg-card border border-border flex items-center justify-center cursor-pointer hover-lift hover:bg-primary/10 transition-all duration-300">
-              <span className="text-muted-foreground hover:text-primary transition-colors">IG</span>
-            </div>
-            <div className="w-10 h-10 rounded-lg bg-card border border-border flex items-center justify-center cursor-pointer hover-lift hover:bg-primary/10 transition-all duration-300">
-              <span className="text-muted-foreground hover:text-primary transition-colors">FB</span>
-            </div>
-          </div>
 
           {/* Scroll indicator */}
           <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">

@@ -73,11 +73,11 @@ const Testimonials = () => {
 
         {/* Testimonials Slider */}
         <div className="mb-20">
-          <Carousel className="w-full max-w-5xl mx-auto">
+          <Carousel className="w-full max-w-6xl mx-auto">
             <CarouselContent className="-ml-2 md:-ml-4">
               {testimonials.map((testimonial, index) => (
-                <CarouselItem key={index} className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
-                  <div className="card-premium hover-lift group relative h-full">
+                <CarouselItem key={index} className="pl-2 md:pl-4 basis-full md:basis-1/2 lg:basis-1/3">
+                  <div className="card-premium hover-lift group relative h-full flex flex-col">
                     <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-accent"></div>
                     
                     <div className="flex items-start gap-4 mb-6">
@@ -86,35 +86,35 @@ const Testimonials = () => {
                           {testimonial.name.charAt(0)}
                         </span>
                       </div>
-                      <div className="flex-1">
-                        <h4 className="font-semibold text-foreground group-hover:text-primary transition-colors">
+                      <div className="flex-1 min-w-0">
+                        <h4 className="font-semibold text-foreground group-hover:text-primary transition-colors text-sm md:text-base">
                           {testimonial.name}
                         </h4>
-                        <p className="text-sm text-muted-foreground">{testimonial.role}</p>
+                        <p className="text-xs md:text-sm text-muted-foreground">{testimonial.role}</p>
                         <p className="text-xs text-muted-foreground/70">{testimonial.company}</p>
                         <div className="flex gap-1 mt-2">
                           {[...Array(testimonial.rating)].map((_, i) => (
-                            <Star key={i} className="w-4 h-4 fill-primary text-primary" />
+                            <Star key={i} className="w-3 h-3 md:w-4 md:h-4 fill-primary text-primary" />
                           ))}
                         </div>
                       </div>
                     </div>
                     
-                    <blockquote className="text-muted-foreground italic leading-relaxed group-hover:text-foreground transition-colors mb-6">
+                    <blockquote className="text-muted-foreground italic leading-relaxed group-hover:text-foreground transition-colors mb-6 flex-grow text-sm md:text-base">
                       "{testimonial.quote}"
                     </blockquote>
                     
-                    <div className="space-y-2">
+                    <div className="space-y-2 mt-auto">
                       {testimonial.results.map((result, idx) => (
-                        <div key={idx} className="flex items-center gap-2 text-sm">
-                          <div className="w-2 h-2 bg-gradient-to-r from-primary to-accent rounded-full animate-pulse"></div>
+                        <div key={idx} className="flex items-center gap-2 text-xs md:text-sm">
+                          <div className="w-2 h-2 bg-gradient-to-r from-primary to-accent rounded-full animate-pulse flex-shrink-0"></div>
                           <span className="text-primary font-medium">{result}</span>
                         </div>
                       ))}
                     </div>
                     
                     {/* Quote decoration */}
-                    <Quote className="absolute top-4 right-4 w-8 h-8 text-primary/10 group-hover:text-primary/20 transition-colors" />
+                    <Quote className="absolute top-4 right-4 w-6 h-6 md:w-8 md:h-8 text-primary/10 group-hover:text-primary/20 transition-colors" />
                   </div>
                 </CarouselItem>
               ))}

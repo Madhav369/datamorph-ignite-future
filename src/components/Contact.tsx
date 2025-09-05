@@ -115,30 +115,6 @@ const Contact = () => {
               ))}
             </div>
 
-            {/* CTA Section */}
-            <div className="bg-gradient-hero rounded-2xl p-8 text-center">
-              <h4 className="text-2xl font-bold text-white mb-4">
-                Ready for AI Transformation?
-              </h4>
-              <p className="text-white/80 mb-6">
-                Join hundreds of companies already leveraging AI for competitive advantage.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button 
-                  className="btn-premium bg-white text-primary hover:bg-white/90"
-                  onClick={() => setIsQuoteFormOpen(true)}
-                >
-                  Get Quote
-                </Button>
-                <Button 
-                  variant="outline" 
-                  className="border-white text-white hover:bg-white hover:text-primary"
-                  onClick={() => window.open('https://calendly.com', '_blank')}
-                >
-                  Book a Call
-                </Button>
-              </div>
-            </div>
           </div>
         </div>
       </div>
