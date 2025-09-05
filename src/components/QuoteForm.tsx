@@ -5,6 +5,7 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Checkbox } from '@/components/ui/checkbox';
 import { toast } from 'sonner';
+import { supabase } from '@/integrations/supabase/client';
 
 interface QuoteFormProps {
   isOpen: boolean;
@@ -59,8 +60,28 @@ const QuoteForm: React.FC<QuoteFormProps> = ({ isOpen, onClose }) => {
     }
 
     try {
-      // TODO: Replace with actual Supabase integration
-      console.log('Form submitted:', formData);
+      const nameParts = formData.fullName.split(' ');
+      const firstName = nameParts[0] || '';
+      const lastName = nameParts.slice(1).join(' ') || '';
+
+      const { error } = await supabase
+        .from('quote_requests')
+        .insert({
+          first_name: firstName,
+          last_name: lastName,
+          email: formData.email,
+          company: formData.company,
+          phone: formData.phone,
+          website: formData.website,
+          services: formData.services,
+          project_description: formData.projectDetails,
+          budget: formData.budget,
+          timeline: formData.timeline,
+          form_type: 'quote'
+        });
+
+      if (error) throw error;
+
       toast.success('Quote request submitted successfully! We\'ll contact you within 24 hours.');
       
       // Reset form
@@ -78,6 +99,7 @@ const QuoteForm: React.FC<QuoteFormProps> = ({ isOpen, onClose }) => {
       
       onClose();
     } catch (error) {
+      console.error('Error submitting quote request:', error);
       toast.error('Failed to submit request. Please try again.');
     }
   };

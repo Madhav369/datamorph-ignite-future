@@ -6,6 +6,8 @@ import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Check } from 'lucide-react';
+import { toast } from 'sonner';
+import { supabase } from '@/integrations/supabase/client';
 
 const Pricing = () => {
   const [formData, setFormData] = useState({
@@ -23,6 +25,8 @@ const Pricing = () => {
     },
     additionalDetails: ''
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   const handleInputChange = (field: string, value: string) => {
     setFormData(prev => ({ ...prev, [field]: value }));
@@ -35,10 +39,69 @@ const Pricing = () => {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
-    // Handle form submission here
+    setIsSubmitting(true);
+
+    try {
+      const nameParts = formData.name.split(' ');
+      const firstName = nameParts[0] || '';
+      const lastName = nameParts.slice(1).join(' ') || '';
+
+      // Convert requirements object to array of selected services
+      const selectedServices = Object.entries(formData.requirements)
+        .filter(([_, selected]) => selected)
+        .map(([key, _]) => {
+          const serviceMap: Record<string, string> = {
+            automation: 'AI Automation',
+            paidAds: 'Paid Advertising',
+            socialMediaManagement: 'Social Media Management',
+            contentCreation: 'Content Creation',
+            dataAnalytics: 'Data Analytics',
+            crmIntegration: 'CRM Integration'
+          };
+          return serviceMap[key] || key;
+        });
+
+      const { error } = await supabase
+        .from('quote_requests')
+        .insert({
+          first_name: firstName,
+          last_name: lastName,
+          email: formData.email,
+          company: formData.company,
+          phone: formData.phone,
+          services: selectedServices,
+          message: formData.additionalDetails,
+          form_type: 'custom'
+        });
+
+      if (error) throw error;
+
+      toast.success('Custom quote request submitted successfully! We\'ll analyze your requirements and get back to you with a personalized proposal.');
+
+      setFormData({
+        name: '',
+        email: '',
+        company: '',
+        phone: '',
+        requirements: {
+          automation: false,
+          paidAds: false,
+          socialMediaManagement: false,
+          contentCreation: false,
+          dataAnalytics: false,
+          crmIntegration: false
+        },
+        additionalDetails: ''
+      });
+      setIsDialogOpen(false);
+    } catch (error) {
+      console.error('Error submitting custom quote request:', error);
+      toast.error('Failed to submit quote request. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const plan = {
@@ -89,7 +152,7 @@ const Pricing = () => {
             </div>
 
             {/* CTA Button with Form */}
-            <Dialog>
+            <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
               <DialogTrigger asChild>
                 <Button className="w-full mb-8 bg-primary text-primary-foreground hover:bg-primary/90">
                   Get Custom Quote
@@ -184,8 +247,12 @@ const Pricing = () => {
                     />
                   </div>
 
-                  <Button type="submit" className="w-full bg-primary text-primary-foreground hover:bg-primary/90">
-                    Submit Requirements
+                  <Button 
+                    type="submit" 
+                    className="w-full bg-primary text-primary-foreground hover:bg-primary/90"
+                    disabled={isSubmitting}
+                  >
+                    {isSubmitting ? 'Submitting...' : 'Submit Requirements'}
                   </Button>
                 </form>
               </DialogContent>

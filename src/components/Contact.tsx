@@ -3,10 +3,68 @@ import { ArrowRight, Mail, Phone, MapPin, Calendar } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
+import { useToast } from '@/hooks/use-toast';
+import { supabase } from '@/integrations/supabase/client';
 import QuoteForm from './QuoteForm';
 
 const Contact = () => {
   const [isQuoteFormOpen, setIsQuoteFormOpen] = useState(false);
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    company: '',
+    message: ''
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const { toast } = useToast();
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    try {
+      const { error } = await supabase
+        .from('quote_requests')
+        .insert({
+          first_name: formData.firstName,
+          last_name: formData.lastName,
+          email: formData.email,
+          company: formData.company,
+          message: formData.message,
+          form_type: 'contact'
+        });
+
+      if (error) throw error;
+
+      toast({
+        title: "Message Sent!",
+        description: "Thank you for contacting us. We'll get back to you soon.",
+      });
+
+      setFormData({
+        firstName: '',
+        lastName: '',
+        email: '',
+        company: '',
+        message: ''
+      });
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      toast({
+        title: "Error",
+        description: "Failed to send message. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
   const contactInfo = [
     {
       icon: <Mail className="w-6 h-6" />,
@@ -51,41 +109,74 @@ const Contact = () => {
           {/* Contact Form */}
           <div className="card-premium">
             <h3 className="text-2xl font-bold mb-6">Get Started Today</h3>
-            <form className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-sm font-medium mb-2">First Name</label>
-                  <Input placeholder="John" className="h-12" />
+                  <Input 
+                    name="firstName"
+                    value={formData.firstName}
+                    onChange={handleInputChange}
+                    placeholder="John" 
+                    className="h-12" 
+                    required
+                  />
                 </div>
                 <div>
                   <label className="block text-sm font-medium mb-2">Last Name</label>
-                  <Input placeholder="Doe" className="h-12" />
+                  <Input 
+                    name="lastName"
+                    value={formData.lastName}
+                    onChange={handleInputChange}
+                    placeholder="Doe" 
+                    className="h-12" 
+                    required
+                  />
                 </div>
               </div>
               
               <div>
                 <label className="block text-sm font-medium mb-2">Email</label>
-                <Input type="email" placeholder="john@company.com" className="h-12" />
+                <Input 
+                  name="email"
+                  type="email" 
+                  value={formData.email}
+                  onChange={handleInputChange}
+                  placeholder="john@company.com" 
+                  className="h-12" 
+                  required
+                />
               </div>
 
               <div>
                 <label className="block text-sm font-medium mb-2">Company</label>
-                <Input placeholder="Your Company" className="h-12" />
+                <Input 
+                  name="company"
+                  value={formData.company}
+                  onChange={handleInputChange}
+                  placeholder="Your Company" 
+                  className="h-12" 
+                />
               </div>
 
               <div>
                 <label className="block text-sm font-medium mb-2">How can we help?</label>
                 <Textarea 
+                  name="message"
+                  value={formData.message}
+                  onChange={handleInputChange}
                   placeholder="Tell us about your AI needs and goals..."
                   className="min-h-[120px] resize-none"
+                  required
                 />
               </div>
 
               <Button 
+                type="submit"
                 className="btn-premium w-full text-lg h-14"
-                onClick={() => setIsQuoteFormOpen(true)}
+                disabled={isSubmitting}
               >
-                Get Quote
+                {isSubmitting ? 'Sending...' : 'Send Message'}
                 <ArrowRight className="ml-2" size={20} />
               </Button>
             </form>
