@@ -40,7 +40,11 @@ const Navigation = () => {
             ))}
             <Button 
               className="btn-premium" 
-              onClick={() => window.open('https://calendly.com', '_blank')}
+              onClick={() => {
+                if (typeof window !== 'undefined' && (window as any).Calendly) {
+                  (window as any).Calendly.initPopupWidget({url: 'https://calendly.com/madhav-bhattarai369/new-meeting'});
+                }
+              }}
             >
               Book a Call
             </Button>
@@ -74,7 +78,11 @@ const Navigation = () => {
               <div className="px-3 py-2">
                 <Button 
                   className="btn-premium w-full"
-                  onClick={() => window.open('https://calendly.com', '_blank')}
+                  onClick={() => {
+                    if (typeof window !== 'undefined' && (window as any).Calendly) {
+                      (window as any).Calendly.initPopupWidget({url: 'https://calendly.com/madhav-bhattarai369/new-meeting'});
+                    }
+                  }}
                 >
                   Book a Call
                 </Button>

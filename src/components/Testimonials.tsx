@@ -1,4 +1,5 @@
-import { Star, Quote } from 'lucide-react';
+import { Star, Quote, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 
 const Testimonials = () => {
   const testimonials = [
@@ -70,69 +71,57 @@ const Testimonials = () => {
           </p>
         </div>
 
-        {/* Testimonials */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
-          {[
-            {
-              name: "Daniel Kim",
-              role: "Operations Lead at Flowbyte",
-              content: "Truly impressive. The AI assistant is fast, accurate, and blends into our daily ops without friction."
-            },
-            {
-              name: "Priya Mehra", 
-              role: "CTO at Brightstack Labs",
-              content: "Game-changer. Automation flows run flawlessly. Our team now focuses only on what really matters."
-            },
-            {
-              name: "Elena Rodriguez",
-              role: "Product Manager at Nexora", 
-              content: "Smooth setup. Their system replaced three tools. We saw improvements in just the first week."
-            },
-            {
-              name: "Marcus Thompson",
-              role: "Marketing Director at OrbitShift",
-              content: "Surprisingly simple. The AI adapts quickly. Our campaigns are now running 2x more efficiently."
-            },
-            {
-              name: "Sarah Wong",
-              role: "Analytics Manager at Corelink",
-              content: "Huge time-saver. Data is better organized. The insights we get now are actionable and fast."
-            },
-            {
-              name: "Ravi Shah",
-              role: "COO at PixelNest Solutions", 
-              content: "Very intuitive. No fluff, just performance. Our internal processes finally feel under control."
-            }
-          ].slice(0, 6).map((testimonial, index) => (
-            <div 
-              key={index} 
-              className="card-premium hover-lift animate-fade-in group relative"
-              style={{ animationDelay: `${index * 0.15}s` }}
-            >
-              <div className="flex items-start gap-4 mb-6">
-                <div className="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center flex-shrink-0 group-hover:bg-primary/30 transition-colors">
-                  <span className="text-primary font-bold text-lg">
-                    {testimonial.name.charAt(0)}
-                  </span>
-                </div>
-                <div>
-                  <h4 className="font-semibold text-foreground group-hover:text-primary transition-colors">
-                    {testimonial.name}
-                  </h4>
-                  <p className="text-sm text-muted-foreground">{testimonial.role}</p>
-                </div>
-              </div>
-              
-              <blockquote className="text-muted-foreground italic leading-relaxed group-hover:text-foreground transition-colors">
-                "{testimonial.content}"
-              </blockquote>
-              
-              {/* Quote decoration */}
-              <div className="absolute top-4 right-4 text-4xl text-primary/10 group-hover:text-primary/20 transition-colors">
-                "
-              </div>
-            </div>
-          ))}
+        {/* Testimonials Slider */}
+        <div className="mb-20">
+          <Carousel className="w-full max-w-5xl mx-auto">
+            <CarouselContent className="-ml-2 md:-ml-4">
+              {testimonials.map((testimonial, index) => (
+                <CarouselItem key={index} className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
+                  <div className="card-premium hover-lift group relative h-full">
+                    <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-accent"></div>
+                    
+                    <div className="flex items-start gap-4 mb-6">
+                      <div className="w-12 h-12 bg-gradient-to-br from-primary/20 to-accent/20 rounded-full flex items-center justify-center flex-shrink-0 group-hover:from-primary/30 group-hover:to-accent/30 transition-all duration-300">
+                        <span className="text-primary font-bold text-lg">
+                          {testimonial.name.charAt(0)}
+                        </span>
+                      </div>
+                      <div className="flex-1">
+                        <h4 className="font-semibold text-foreground group-hover:text-primary transition-colors">
+                          {testimonial.name}
+                        </h4>
+                        <p className="text-sm text-muted-foreground">{testimonial.role}</p>
+                        <p className="text-xs text-muted-foreground/70">{testimonial.company}</p>
+                        <div className="flex gap-1 mt-2">
+                          {[...Array(testimonial.rating)].map((_, i) => (
+                            <Star key={i} className="w-4 h-4 fill-primary text-primary" />
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <blockquote className="text-muted-foreground italic leading-relaxed group-hover:text-foreground transition-colors mb-6">
+                      "{testimonial.quote}"
+                    </blockquote>
+                    
+                    <div className="space-y-2">
+                      {testimonial.results.map((result, idx) => (
+                        <div key={idx} className="flex items-center gap-2 text-sm">
+                          <div className="w-2 h-2 bg-gradient-to-r from-primary to-accent rounded-full animate-pulse"></div>
+                          <span className="text-primary font-medium">{result}</span>
+                        </div>
+                      ))}
+                    </div>
+                    
+                    {/* Quote decoration */}
+                    <Quote className="absolute top-4 right-4 w-8 h-8 text-primary/10 group-hover:text-primary/20 transition-colors" />
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious className="hidden md:flex -left-12 bg-card border-primary/20 hover:bg-primary/10" />
+            <CarouselNext className="hidden md:flex -right-12 bg-card border-primary/20 hover:bg-primary/10" />
+          </Carousel>
         </div>
 
         {/* Case Studies Section */}

@@ -79,7 +79,14 @@ const Hero = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16 animate-slide-up" style={{
           animationDelay: '0.8s'
         }}>
-            <Button className="btn-premium text-lg px-8 py-4 rounded-lg hover-lift group">
+            <Button 
+              className="btn-premium text-lg px-8 py-4 rounded-lg hover-lift group"
+              onClick={() => {
+                if (typeof window !== 'undefined' && (window as any).Calendly) {
+                  (window as any).Calendly.initPopupWidget({url: 'https://calendly.com/madhav-bhattarai369/new-meeting'});
+                }
+              }}
+            >
               <span className="group-hover:animate-pulse">Book A Free Call</span>
               <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={20} />
             </Button>
