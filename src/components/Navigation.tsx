@@ -42,7 +42,7 @@ const Navigation = () => {
               className="btn-premium" 
               onClick={() => {
                 if (typeof window !== 'undefined' && (window as any).Calendly) {
-                  (window as any).Calendly.initPopupWidget({url: 'https://calendly.com/madhav-bhattarai369/new-meeting'});
+                  (window as any).Calendly.initPopupWidget({url: 'https://calendly.com/madhav-bhattarai369/datamorph-brief'});
                 }
               }}
             >
@@ -80,7 +80,7 @@ const Navigation = () => {
                   className="btn-premium w-full"
                   onClick={() => {
                     if (typeof window !== 'undefined' && (window as any).Calendly) {
-                      (window as any).Calendly.initPopupWidget({url: 'https://calendly.com/madhav-bhattarai369/new-meeting'});
+                      (window as any).Calendly.initPopupWidget({url: 'https://calendly.com/madhav-bhattarai369/datamorph-brief'});
                     }
                   }}
                 >
