@@ -17,14 +17,17 @@ export type Database = {
       DataMorph: {
         Row: {
           created_at: string
+          "DataMorph Brief": Json | null
           id: number
         }
         Insert: {
           created_at?: string
+          "DataMorph Brief"?: Json | null
           id?: number
         }
         Update: {
           created_at?: string
+          "DataMorph Brief"?: Json | null
           id?: number
         }
         Relationships: []
