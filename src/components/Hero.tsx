@@ -83,7 +83,7 @@ const Hero = () => {
               className="btn-premium text-lg px-8 py-4 rounded-lg hover-lift group"
               onClick={() => {
                 if (typeof window !== 'undefined' && (window as any).Calendly) {
-                  (window as any).Calendly.initPopupWidget({url: 'https://calendly.com/madhav-bhattarai369/new-meeting'});
+                  (window as any).Calendly.initPopupWidget({url: 'https://calendly.com/madhav-bhattarai369/datamorph-brief'});
                 }
               }}
             >

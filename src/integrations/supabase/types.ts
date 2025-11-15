@@ -10,61 +10,22 @@ export type Database = {
   // Allows to automatically instantiate createClient with right options
   // instead of createClient<Database, { PostgrestVersion: 'XX' }>(URL, KEY)
   __InternalSupabase: {
-    PostgrestVersion: "13.0.4"
+    PostgrestVersion: "13.0.5"
   }
   public: {
     Tables: {
-      quote_requests: {
+      DataMorph: {
         Row: {
-          budget: string | null
-          company: string | null
           created_at: string
-          email: string
-          first_name: string
-          form_type: string
-          id: string
-          last_name: string
-          message: string | null
-          phone: string | null
-          project_description: string | null
-          services: string[] | null
-          timeline: string | null
-          updated_at: string
-          website: string | null
+          id: number
         }
         Insert: {
-          budget?: string | null
-          company?: string | null
           created_at?: string
-          email: string
-          first_name: string
-          form_type?: string
-          id?: string
-          last_name: string
-          message?: string | null
-          phone?: string | null
-          project_description?: string | null
-          services?: string[] | null
-          timeline?: string | null
-          updated_at?: string
-          website?: string | null
+          id?: number
         }
         Update: {
-          budget?: string | null
-          company?: string | null
           created_at?: string
-          email?: string
-          first_name?: string
-          form_type?: string
-          id?: string
-          last_name?: string
-          message?: string | null
-          phone?: string | null
-          project_description?: string | null
-          services?: string[] | null
-          timeline?: string | null
-          updated_at?: string
-          website?: string | null
+          id?: number
         }
         Relationships: []
       }
