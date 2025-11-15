@@ -32,6 +32,60 @@ export type Database = {
         }
         Relationships: []
       }
+      quote_requests: {
+        Row: {
+          budget: string | null
+          company: string | null
+          created_at: string
+          email: string
+          first_name: string
+          form_type: string
+          id: string
+          last_name: string
+          message: string | null
+          phone: string | null
+          project_description: string | null
+          services: string[] | null
+          timeline: string | null
+          updated_at: string
+          website: string | null
+        }
+        Insert: {
+          budget?: string | null
+          company?: string | null
+          created_at?: string
+          email: string
+          first_name: string
+          form_type?: string
+          id?: string
+          last_name: string
+          message?: string | null
+          phone?: string | null
+          project_description?: string | null
+          services?: string[] | null
+          timeline?: string | null
+          updated_at?: string
+          website?: string | null
+        }
+        Update: {
+          budget?: string | null
+          company?: string | null
+          created_at?: string
+          email?: string
+          first_name?: string
+          form_type?: string
+          id?: string
+          last_name?: string
+          message?: string | null
+          phone?: string | null
+          project_description?: string | null
+          services?: string[] | null
+          timeline?: string | null
+          updated_at?: string
+          website?: string | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
